@@ -2,6 +2,7 @@ import CoverageSection from "../../components/Home/CoverageSection/CoverageSecti
 import Plants from "../../components/Home/Plants";
 import Review from "../../components/Home/Review/Review";
 import Banner from "../../components/Home/Slider/Banner";
+import Testimonials from "../../components/Home/Testimonials/Testimonials";
 import WhyChooseBookCourier from "../../components/Home/Why-Choose-Book-Courier/WhyChooseBookCourier";
 
 const Home = () => {
@@ -17,6 +18,8 @@ const Home = () => {
       <WhyChooseBookCourier></WhyChooseBookCourier>
       {/* Review  */}
       <Review></Review>
+      {/* Testimonials */}
+      <Testimonials></Testimonials>
       {/* More components */}
     </div>
   );
