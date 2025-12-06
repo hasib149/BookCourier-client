@@ -1,5 +1,6 @@
 import CoverageSection from "../../components/Home/CoverageSection/CoverageSection";
 import Plants from "../../components/Home/Plants";
+import Review from "../../components/Home/Review/Review";
 import Banner from "../../components/Home/Slider/Banner";
 import WhyChooseBookCourier from "../../components/Home/Why-Choose-Book-Courier/WhyChooseBookCourier";
 
@@ -15,7 +16,7 @@ const Home = () => {
       {/* Why Choose Book Courier */}
       <WhyChooseBookCourier></WhyChooseBookCourier>
       {/* Review  */}
-
+      <Review></Review>
       {/* More components */}
     </div>
   );
