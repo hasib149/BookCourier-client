@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed w-full bg-linear-to-r from-blue-500 via-blue-400 to-sky-400 z-10 shadow-sm">
-      <div className="py-3 ">
+      <div className="py-6 ">
         <Container>
           <div className="flex flex-row  items-center justify-between gap-3 md:gap-0">
             {/* Logo */}
@@ -53,7 +53,7 @@ const Navbar = () => {
                   }`
                 }
               >
-                Books
+               All Books
               </NavLink>
               <NavLink
                 to="/dashboard"
