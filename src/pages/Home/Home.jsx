@@ -1,4 +1,5 @@
 import CoverageSection from "../../components/Home/CoverageSection/CoverageSection";
+import FeaturedBooks from "../../components/Home/FeaturedBooks/FeaturedBooks";
 import Plants from "../../components/Home/Plants";
 import Review from "../../components/Home/Review/Review";
 import Banner from "../../components/Home/Slider/Banner";
@@ -20,6 +21,8 @@ const Home = () => {
       <Review></Review>
       {/* Testimonials */}
       <Testimonials></Testimonials>
+      {/* Featured Books */}
+      <FeaturedBooks></FeaturedBooks>
       {/* More components */}
     </div>
   );

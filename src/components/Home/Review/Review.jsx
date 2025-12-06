@@ -35,7 +35,7 @@ const Review = () => {
     <div className="mb-16">
       <div className="text-center  p-8 rounded-lg max-w-3xl mx-auto mt-16 mb-16">
         <h2 className="text-4xl font-bold text-blue-700 mb-3">
-          What our customers are <span className="text-sky-600">saying</span>
+            Customers most <span className="text-sky-600">favoruite book</span>
         </h2>
         <p className="text-lg text-gray-600">
           Enhance posture, mobility, and well-being effortlessly with Posture
