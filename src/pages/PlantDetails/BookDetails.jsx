@@ -105,7 +105,7 @@ const BookDetails = () => {
           </div>
           <hr className="my-6" />
 
-          <PurchaseModal closeModal={closeModal} isOpen={isOpen} />
+          <PurchaseModal book={book} closeModal={closeModal} isOpen={isOpen} />
         </div>
       </div>
     </Container>

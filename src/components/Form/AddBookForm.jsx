@@ -219,7 +219,7 @@ const AddBookForm = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 bg-gradient-to-r from-blue-500 to-sky-500 text-white font-semibold rounded-xl hover:opacity-90 transition"
+            className="w-full py-3 bg-linear-to-r from-blue-500 to-sky-500 text-white font-semibold rounded-xl hover:opacity-90 transition"
           >
             Add Book
           </button>
