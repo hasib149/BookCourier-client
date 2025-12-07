@@ -10,9 +10,9 @@ import { BsGraphUp } from "react-icons/bs";
 // User Menu
 import MenuItem from "./Menu/MenuItem";
 import AdminMenu from "./Menu/AdminMenu";
-import SellerMenu from "./Menu/SellerMenu";
 import CustomerMenu from "./Menu/CustomerMenu";
 import Logo from "../../Shared/Logo";
+import LibrarianMenu from "./Menu/LibrarianMenu";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
@@ -53,7 +53,7 @@ const Sidebar = () => {
           {/* Top Content */}
           <div>
             {/* Logo */}
-            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-lime-100 mx-auto">
+            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-blue-400 mx-auto">
               <Link to="/">
                 <Logo></Logo>
               </Link>
@@ -61,7 +61,7 @@ const Sidebar = () => {
           </div>
 
           {/* Middle Content */}
-          <div className="flex flex-col justify-between flex-1 mt-6">
+          <div className="flex flex-col justify-between flex-1  mt-6">
             {/*  Menu Items */}
             <nav>
               {/* Common Menu */}
@@ -72,7 +72,7 @@ const Sidebar = () => {
               />
               {/* Role-Based Menu */}
               <CustomerMenu />
-              <SellerMenu />
+              <LibrarianMenu />
               <AdminMenu />
             </nav>
           </div>
@@ -88,7 +88,7 @@ const Sidebar = () => {
             />
             <button
               onClick={logOut}
-              className="flex cursor-pointer w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
+              className="flex cursor-pointer w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-blue-500   hover:text-gray-700 transition-colors duration-300 transform"
             >
               <GrLogout className="w-5 h-5" />
 

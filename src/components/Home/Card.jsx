@@ -1,66 +1,41 @@
 import { Link } from "react-router";
 
-const Card = () => {
+const Card = ({ book }) => {
+  const {
+    image,
+    category,
+    price,
+    quantity,
+    description,
+    status,
+    author,
+    name,
+    _id,
+  } = book;
+
   return (
-    <Link
-      to={`/plant/1`}
-      className='col-span-1 cursor-pointer group shadow-xl p-3 rounded-xl'
-    >
-      <div className='flex flex-col gap-2 w-full'>
-        <div
-          className='
-              aspect-square
-              w-full
-              relative
-              overflow-hidden
-              rounded-xl
-            '
-        >
-          <img
-            className='
-                object-cover
-                h-full
-                w-full
-                group-hover:scale-110
-                transition
-              '
-            src='https://i.ibb.co.com/rMHmQP2/money-plant-in-feng-shui-brings-luck.jpg'
-            alt='Plant Image'
-          />
-          <div
-            className='
-              absolute
-              top-3
-              right-3
-            '
-          ></div>
-        </div>
-        <div className='font-semibold text-lg'>Money Plant</div>
-        <div className='font-semibold text-lg'>Category: Indoor</div>
-        <div className='font-semibold text-lg'>Quantity: 10</div>
-        <div className='flex flex-row items-center gap-1'>
-          <div className='font-semibold'> Price: 15$</div>
+    <Link to={`/books/${_id}`}>
+      <div className="card bg-white w-80 shadow-lg rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+        <figure className="h-60 w-full overflow-hidden">
+          <img src={image} alt={name} className="w-full h-full object-cover" />
+        </figure>
+        <div className="card-body p-4">
+          <h2 className="card-title text-lg font-bold text-blue-800">{name}</h2>
+          <p className="text-sm text-gray-500 mb-2">Author: {author}</p>
+          <p className="text-sm text-gray-600 mb-2">{description}</p>
+          <div className="flex justify-between items-center mt-2">
+            <span className="badge badge-outline text-blue-600">
+              Category: {category}
+            </span>
+            <span className="font-semibold text-blue-800">${price}</span>
+          </div>
+          <p className="text-sm text-gray-400 mt-1">Available: {quantity}</p>
+          <div className="card-actions justify-end mt-3">
+            {status && <span className="badge badge-success">{status}</span>}
+          </div>
         </div>
       </div>
     </Link>
-    // <Link to="plant/1">
-    //   <div className="card bg-base-100 w-96 shadow-sm">
-    //     <figure>
-    //       <img
-    //         src="https://i.ibb.co.com/rMHmQP2/money-plant-in-feng-shui-brings-luck.jpg"
-    //         alt="Shoes"
-    //       />
-    //     </figure>
-    //     <div className="card-body">
-    //       <h2 className="card-title">Money Plant </h2>
-    //       <p>Category: Indoor</p>
-    //       <p>Quantity: 10</p>
-    //       <div className="card-actions justify-end">
-    //         <button className="btn btn-primary">Price: 15$</button>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </Link>
   );
 };
 

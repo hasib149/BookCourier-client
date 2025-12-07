@@ -6,6 +6,7 @@ const LoadingSpinner = ({ smallHeight }) => {
       className={` ${smallHeight ? 'h-[250px]' : 'h-[70vh]'}
       flex 
       flex-col 
+      text-blue-600
       justify-center 
       items-center `}
     >

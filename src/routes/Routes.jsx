@@ -1,40 +1,45 @@
-import Home from '../pages/Home/Home'
-import ErrorPage from '../pages/ErrorPage'
-import Login from '../pages/Login/Login'
-import SignUp from '../pages/SignUp/SignUp'
-import PlantDetails from '../pages/PlantDetails/PlantDetails'
-import PrivateRoute from './PrivateRoute'
-import DashboardLayout from '../layouts/DashboardLayout'
-import AddPlant from '../pages/Dashboard/Seller/AddPlant'
-import ManageUsers from '../pages/Dashboard/Admin/ManageUsers'
-import Profile from '../pages/Dashboard/Common/Profile'
-import Statistics from '../pages/Dashboard/Common/Statistics'
-import MainLayout from '../layouts/MainLayout'
-import MyInventory from '../pages/Dashboard/Seller/MyInventory'
-import ManageOrders from '../pages/Dashboard/Seller/ManageOrders'
-import MyOrders from '../pages/Dashboard/Customer/MyOrders'
-import { createBrowserRouter } from 'react-router'
+import Home from "../pages/Home/Home";
+import ErrorPage from "../pages/ErrorPage";
+import Login from "../pages/Login/Login";
+import SignUp from "../pages/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "../layouts/DashboardLayout";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import Profile from "../pages/Dashboard/Common/Profile";
+import Statistics from "../pages/Dashboard/Common/Statistics";
+import MainLayout from "../layouts/MainLayout";
+import MyInventory from "../pages/Dashboard/Librarian/MyInventory";
+import ManageOrders from "../pages/Dashboard/Librarian/ManageOrders";
+import MyOrders from "../pages/Dashboard/Customer/MyOrders";
+import { createBrowserRouter } from "react-router";
+import AllBooks from "../pages/AllBooks/AllBooks";
+import AddBook from "../pages/Dashboard/Librarian/AddBook";
+import BookDetails from "../pages/PlantDetails/BookDetails";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <MainLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
       },
       {
-        path: '/plant/:id',
-        element: <PlantDetails />,
+        path: "/all-books",
+        element: <AllBooks />,
+      },
+      {
+        path: "/books/:id",
+        element: <BookDetails />,
       },
     ],
   },
-  { path: '/login', element: <Login /> },
-  { path: '/signup', element: <SignUp /> },
+  { path: "/login", element: <Login /> },
+  { path: "/signup", element: <SignUp /> },
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: (
       <PrivateRoute>
         <DashboardLayout />
@@ -50,15 +55,15 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'add-plant',
+        path: "add-book",
         element: (
           <PrivateRoute>
-            <AddPlant />
+            <AddBook />
           </PrivateRoute>
         ),
       },
       {
-        path: 'my-inventory',
+        path: "my-inventory",
         element: (
           <PrivateRoute>
             <MyInventory />
@@ -66,7 +71,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'manage-users',
+        path: "manage-users",
         element: (
           <PrivateRoute>
             <ManageUsers />
@@ -74,7 +79,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'profile',
+        path: "profile",
         element: (
           <PrivateRoute>
             <Profile />
@@ -82,7 +87,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'my-orders',
+        path: "my-orders",
         element: (
           <PrivateRoute>
             <MyOrders />
@@ -90,9 +95,9 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'manage-orders',
+        path: "manage-orders",
         element: <ManageOrders />,
       },
     ],
   },
-])
+]);

@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed w-full bg-linear-to-r from-blue-500 via-blue-400 to-sky-400 z-10 shadow-sm">
-      <div className="py-6 ">
+      <div className="py-4 ">
         <Container>
           <div className="flex flex-row  items-center justify-between gap-3 md:gap-0">
             {/* Logo */}
@@ -44,7 +44,7 @@ const Navbar = () => {
                 Home
               </NavLink>
               <NavLink
-                to="/"
+                to="/all-books"
                 className={({ isActive }) =>
                   `px-4 py-3 transition font-semibold ${
                     isActive
