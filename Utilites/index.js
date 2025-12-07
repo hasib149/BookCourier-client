@@ -10,3 +10,4 @@ export const imageUpload = async (imageData) => {
   );
   return data?.data?.display_url;
 };
+

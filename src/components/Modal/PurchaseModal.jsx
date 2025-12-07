@@ -33,13 +33,15 @@ const PurchaseModal = ({ closeModal, isOpen, book }) => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const { address, Phone, email, name } = data;
+    const { address, Phone, email, name, bookname } = data;
     try {
       const orderData = {
         address,
         Phone,
         email,
         name,
+        bookname,
+        productId: book._id,
       };
       await mutateAsync(orderData);
       reset();
@@ -100,6 +102,22 @@ const PurchaseModal = ({ closeModal, isOpen, book }) => {
               />
               {errors.email && (
                 <p className="text-red-600 text-sm mb-3">Email is required</p>
+              )}
+              {/* book-name */}
+              <label className="block mb-2 text-blue-600 font-semibold">
+                Book Name
+              </label>
+              <input
+                type="text"
+                defaultValue={book?.name}
+                readOnly
+                className="w-full p-2 border rounded mb-1 bg-gray-100"
+                {...register("bookname", { required: true })}
+              />
+              {errors.bookname && (
+                <p className="text-red-600 text-sm mb-3">
+                  bookname is required
+                </p>
               )}
 
               {/* Phone */}

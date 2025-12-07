@@ -24,8 +24,6 @@ const BookDetails = () => {
     price,
     quantity,
     description,
-    status,
-    author,
     name,
     _id,
     Librarian,
