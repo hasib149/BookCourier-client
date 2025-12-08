@@ -15,6 +15,7 @@ import { createBrowserRouter } from "react-router";
 import AllBooks from "../pages/AllBooks/AllBooks";
 import AddBook from "../pages/Dashboard/Librarian/AddBook";
 import BookDetails from "../pages/PlantDetails/BookDetails";
+import PaymentSuccess from "../pages/Payment/PaymentSuccess";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/all-books",
         element: <AllBooks />,
+      },
+      {
+        path: "/payment-success",
+        element: <PaymentSuccess />,
       },
       {
         path: "/books/:id",

@@ -5,7 +5,6 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import LoadingSpinner from "../Shared/LoadingSpinner";
-import ErrorPage from "../../pages/ErrorPage";
 
 const PurchaseModal = ({ closeModal, isOpen, book }) => {
   const { user } = useAuth();
@@ -33,7 +32,8 @@ const PurchaseModal = ({ closeModal, isOpen, book }) => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const { address, Phone, email, name, bookname } = data;
+    const { address, Phone, email, name, bookname, price } = data;
+
     try {
       const orderData = {
         address,
@@ -42,6 +42,7 @@ const PurchaseModal = ({ closeModal, isOpen, book }) => {
         name,
         bookname,
         productId: book._id,
+        price: Number(price),
       };
       await mutateAsync(orderData);
       reset();
@@ -67,7 +68,7 @@ const PurchaseModal = ({ closeModal, isOpen, book }) => {
           >
             <DialogTitle
               as="h3"
-              className="text-lg font-medium text-center leading-6 text-gray-900 mb-4"
+              className="text-lg font-medium text-center leading-6 text-blue-700 mb-4"
             >
               Place Your Order
             </DialogTitle>
@@ -118,6 +119,20 @@ const PurchaseModal = ({ closeModal, isOpen, book }) => {
                 <p className="text-red-600 text-sm mb-3">
                   bookname is required
                 </p>
+              )}
+              {/* Price */}
+              <label className="block mb-2 text-blue-600 font-semibold">
+                Price
+              </label>
+              <input
+                type="number"
+                defaultValue={book?.price} 
+                readOnly
+                className="w-full p-2 border rounded mb-1 bg-gray-100"
+                {...register("price", { required: true })}
+              />
+              {errors.price && (
+                <p className="text-red-600 text-sm mb-3">price is required</p>
               )}
 
               {/* Phone */}

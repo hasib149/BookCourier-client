@@ -2,20 +2,58 @@ import { useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router";
+import useAuth from "../../../hooks/useAuth";
 
 const CustomerOrderDataRow = ({ order }) => {
-  const { _id, bookname, orderedAt, order_status, email, payment_status } =
-    order;
-  const queryClient = useQueryClient();
+  const {
+    _id,
+    bookname,
+    orderedAt,
+    order_status,
+    email,
+    payment_status,
+    price,
+  } = order;
+  const { user } = useAuth();
 
   // Cancel Order
   const handleCancel = async () => {
     await axios.patch(`${import.meta.env.VITE_API_URL}/cancel-order/${_id}`);
     toast.success("Order Cancelled!");
-    queryClient.setQueryData(["orders", email], (oldData) => {
-      if (!oldData) return [];
-      return oldData.filter((item) => item._id !== _id);
-    });
+  };
+
+  // payment
+  const handlePayment = async () => {
+    try {
+      const paymentInfo = {
+        bookId: _id,
+        bookname,
+        orderedAt,
+        email,
+        order_status,
+        payment_status,
+        quantity: 1,
+        price: Number(price), // ensure it's a number
+        customer: {
+          name: user?.displayName,
+          email: user?.email,
+          image: user?.photoURL,
+        },
+      };
+      // POST request to backend
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/create-checkout-session`,
+        paymentInfo
+      );
+      // check if session URL exists
+      if (data?.url) {
+        window.location.href = data.url; // redirect to Stripe checkout
+      } else {
+        console.error("Checkout URL not found:", data);
+      }
+    } catch (error) {
+      console.error("Payment Error:", error);
+    }
   };
 
   return (
@@ -25,6 +63,7 @@ const CustomerOrderDataRow = ({ order }) => {
       <td className="px-5 py-5 border-b border-gray-200 text-sm">
         {new Date(orderedAt).toLocaleDateString()}
       </td>
+      <td className="px-5 py-5 border-b border-gray-200 text-sm">{price}</td>
 
       <td className="px-5 py-5 border-b border-gray-200 text-sm capitalize">
         {order_status}
@@ -35,19 +74,24 @@ const CustomerOrderDataRow = ({ order }) => {
 
       <td className="px-5 py-5 border-b border-gray-200 text-sm">
         {/* Cancel Button (Only Pending + Not Paid) */}
-        {order_status === "pending" && payment_status !== "paid" && (
+        {order_status === "pending" && payment_status !== "paid" ? (
           <button
             onClick={handleCancel}
             className="px-3 py-1 bg-red-500 text-white rounded mr-2"
           >
             Cancel
           </button>
-        )}
+        ) : order_status === "cancelled" ? (
+          <span className="px-3 py-1 bg-gray-400 text-white rounded">
+            Cancelled
+          </span>
+        ) : null}
 
         {/* Pay Now Button (Only Pending + Unpaid) */}
         {order_status === "pending" && payment_status === "unpaid" && (
           <Link
-            to={`/payment/${_id}`}
+            onClick={handlePayment}
+            // to={`/payment/${_id}`}
             className="px-3 py-1 bg-green-600 text-white rounded"
           >
             Pay Now

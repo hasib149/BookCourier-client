@@ -38,6 +38,9 @@ const MyOrders = () => {
                     <th className="px-5 py-3 bg-sky-200 border-b border-blue-200 text-blue-700 text-left text-sm uppercase font-semibold tracking-wider">
                       Order Date
                     </th>
+                    <th className="px-5 py-3 bg-sky-200 border-b border-blue-200 text-blue-700 text-left text-sm uppercase font-semibold tracking-wider">
+                      Price
+                    </th>
 
                     <th className="px-5 py-3 bg-sky-200 border-b border-blue-200 text-blue-700 text-left text-sm uppercase font-semibold tracking-wider">
                       Processing
