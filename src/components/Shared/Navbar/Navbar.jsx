@@ -53,7 +53,7 @@ const Navbar = () => {
                   }`
                 }
               >
-               All Books
+                All Books
               </NavLink>
               <NavLink
                 to="/dashboard"
@@ -119,12 +119,10 @@ const Navbar = () => {
                   <div className="hidden md:block">
                     {/* Avatar */}
                     <img
-                      className="rounded-full"
+                      className="rounded-full w-8 h-8 object-cover"
                       referrerPolicy="no-referrer"
-                      src={user && user.photoURL ? user.photoURL : avatarImg}
+                      src={user?.photoURL || avatarImg}
                       alt="profile"
-                      height="30"
-                      width="30"
                     />
                   </div>
                 </div>

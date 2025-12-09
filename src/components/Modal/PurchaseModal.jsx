@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import LoadingSpinner from "../Shared/LoadingSpinner";
 
 const PurchaseModal = ({ closeModal, isOpen, book }) => {
+  console.log(book);
   const { user } = useAuth();
 
   const {
@@ -33,6 +34,7 @@ const PurchaseModal = ({ closeModal, isOpen, book }) => {
 
   const onSubmit = async (data) => {
     const { address, Phone, email, name, bookname, price } = data;
+    console.log(data);
 
     try {
       const orderData = {
@@ -43,6 +45,11 @@ const PurchaseModal = ({ closeModal, isOpen, book }) => {
         bookname,
         productId: book._id,
         price: Number(price),
+        librarian: {
+          image: book?.Librarian?.image,
+          name: book?.Librarian?.name,
+          email: book?.Librarian?.email,
+        },
       };
       await mutateAsync(orderData);
       reset();
@@ -126,7 +133,7 @@ const PurchaseModal = ({ closeModal, isOpen, book }) => {
               </label>
               <input
                 type="number"
-                defaultValue={book?.price} 
+                defaultValue={book?.price}
                 readOnly
                 className="w-full p-2 border rounded mb-1 bg-gray-100"
                 {...register("price", { required: true })}
@@ -181,7 +188,6 @@ const PurchaseModal = ({ closeModal, isOpen, book }) => {
                 </button>
               </div>
             </form>
-            {/* FORM END */}
           </DialogPanel>
         </div>
       </div>

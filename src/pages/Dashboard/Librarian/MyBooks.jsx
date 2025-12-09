@@ -30,9 +30,9 @@ const MyBooks = () => {
             <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
               <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
                 <table className="min-w-full leading-normal">
-                  <thead>
+                  <thead className="sticky">
                     <tr>
-                      <th className="px-6 py-3 bg-sky-200 border-b border-blue-200 text-blue-700 text-center text-sm uppercase font-semibold tracking-wider whitespace-nowrap w-1/3">
+                      <th className="px-6  py-3 bg-sky-200 border-b border-blue-200 text-blue-700 text-center text-sm uppercase font-semibold tracking-wider whitespace-nowrap w-1/3">
                         image
                       </th>
 
