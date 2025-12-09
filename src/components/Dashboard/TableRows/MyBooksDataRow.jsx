@@ -10,6 +10,7 @@ const MyBooksDataRow = ({ book }) => {
     await axios.patch(`${import.meta.env.VITE_API_URL}/status-update/${_id}`);
     toast.success(`${name}, unpublished successfully!`);
   };
+  
 
   return (
     <tr>
@@ -29,7 +30,6 @@ const MyBooksDataRow = ({ book }) => {
       </td>
       <td className="px-6 py-4 border-b border-gray-200 text-center text-sm whitespace-nowrap w-1/3">
         <Link
-          book={book}
           to={`/dashboard/edit-book/${book._id}`}
           className="bg-blue-400 py-2 text-white px-3 rounded-lg mr-2"
         >
