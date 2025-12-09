@@ -44,9 +44,6 @@ const Orders = () => {
                       Price
                     </th>
                     <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
-                     Phone
-                    </th>
-                    <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
                       Address
                     </th>
                     <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">

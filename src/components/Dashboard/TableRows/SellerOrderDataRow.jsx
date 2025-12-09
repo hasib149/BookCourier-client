@@ -1,10 +1,21 @@
 import { useState } from "react";
 import DeleteModal from "../../Modal/DeleteModal";
+import axios from "axios";
 const SellerOrderDataRow = ({ order, refetch }) => {
   let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
-  console.log(order);
-  const { bookname, email, price, address, order_status, Phone, _id } = order;
+  const { bookname, email, price, address, order_status, _id } = order;
+  const updateStatus = async (id, status) => {
+    try {
+      await axios.put(`${import.meta.env.VITE_API_URL}/orders/status/${id}`, {
+        status,
+      });
+      refetch();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <tr>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -17,9 +28,6 @@ const SellerOrderDataRow = ({ order, refetch }) => {
         <p className="text-gray-900 ">{price}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 ">{Phone}</p>
-      </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <p className="text-gray-900 ">{address}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -30,6 +38,8 @@ const SellerOrderDataRow = ({ order, refetch }) => {
         <div className="flex items-center gap-2">
           <select
             required
+            value={order.order_status}
+            onChange={(e) => updateStatus(order._id, e.target.value)}
             className="p-1 border-2 border-blue-300 focus:outline-blue-500 rounded-md text-gray-900  bg-white"
             name="category"
           >
