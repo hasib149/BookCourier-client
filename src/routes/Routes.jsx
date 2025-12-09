@@ -16,6 +16,7 @@ import AllBooks from "../pages/AllBooks/AllBooks";
 import AddBook from "../pages/Dashboard/Librarian/AddBook";
 import BookDetails from "../pages/PlantDetails/BookDetails";
 import PaymentSuccess from "../pages/Payment/PaymentSuccess";
+import Invoices from "../pages/Invoices/Invoices";
 
 export const router = createBrowserRouter([
   {
@@ -96,6 +97,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyOrders />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "invoices",
+        element: (
+          <PrivateRoute>
+            <Invoices />
           </PrivateRoute>
         ),
       },

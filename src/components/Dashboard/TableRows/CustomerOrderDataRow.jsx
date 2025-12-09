@@ -1,4 +1,3 @@
-import { useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router";
@@ -47,7 +46,7 @@ const CustomerOrderDataRow = ({ order }) => {
       );
       // check if session URL exists
       if (data?.url) {
-        window.location.href = data.url; // redirect to Stripe checkout
+        window.location.href = data.url; 
       } else {
         console.error("Checkout URL not found:", data);
       }
