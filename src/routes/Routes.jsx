@@ -8,7 +8,6 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Profile from "../pages/Dashboard/Common/Profile";
 import Statistics from "../pages/Dashboard/Common/Statistics";
 import MainLayout from "../layouts/MainLayout";
-import MyInventory from "../pages/Dashboard/Librarian/MyInventory";
 import ManageOrders from "../pages/Dashboard/Librarian/ManageOrders";
 import MyOrders from "../pages/Dashboard/Customer/MyOrders";
 import { createBrowserRouter } from "react-router";
@@ -16,7 +15,8 @@ import AllBooks from "../pages/AllBooks/AllBooks";
 import AddBook from "../pages/Dashboard/Librarian/AddBook";
 import BookDetails from "../pages/PlantDetails/BookDetails";
 import PaymentSuccess from "../pages/Payment/PaymentSuccess";
-import Invoices from "../pages/Invoices/Invoices";
+import MyBooks from "../pages/Dashboard/Librarian/MyBooks";
+import Invoices from "../pages/Dashboard/Customer/Invoices/Invoices";
 
 export const router = createBrowserRouter([
   {
@@ -69,10 +69,10 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "my-inventory",
+        path: "my-books",
         element: (
           <PrivateRoute>
-            <MyInventory />
+            <MyBooks />
           </PrivateRoute>
         ),
       },

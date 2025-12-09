@@ -1,9 +1,9 @@
 import React from "react";
-import InvoicesOrderData from "../../components/Dashboard/TableRows/InvoicesOrderData";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import useAuth from "../../hooks/useAuth";
-import LoadingSpinner from "../../components/Shared/LoadingSpinner";
+import useAuth from "../../../../hooks/useAuth";
+import LoadingSpinner from "../../../../components/Shared/LoadingSpinner";
+import InvoicesOrderData from "../../../../components/Dashboard/TableRows/InvoicesOrderData";
 
 const Invoices = () => {
   const { user } = useAuth();

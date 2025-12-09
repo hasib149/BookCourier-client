@@ -8,7 +8,7 @@ const LibrarianMenu = () => {
         label="Add Book"
         address="add-book"
       />
-      <MenuItem icon={MdHomeWork} label="My Inventory" address="my-inventory" />
+      <MenuItem icon={MdHomeWork} label="My Books" address="my-books" />
       <MenuItem
         icon={MdOutlineManageHistory}
         label="Manage Orders"

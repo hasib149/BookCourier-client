@@ -32,7 +32,7 @@ const CustomerOrderDataRow = ({ order }) => {
         order_status,
         payment_status,
         quantity: 1,
-        price: Number(price), // ensure it's a number
+        price: Number(price), 
         customer: {
           name: user?.displayName,
           email: user?.email,
@@ -44,7 +44,6 @@ const CustomerOrderDataRow = ({ order }) => {
         `${import.meta.env.VITE_API_URL}/create-checkout-session`,
         paymentInfo
       );
-      // check if session URL exists
       if (data?.url) {
         window.location.href = data.url; 
       } else {
