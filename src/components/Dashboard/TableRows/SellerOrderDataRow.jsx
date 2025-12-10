@@ -4,7 +4,7 @@ import axios from "axios";
 const SellerOrderDataRow = ({ order, refetch }) => {
   let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
-  const { bookname, email, price, address, order_status, _id } = order;
+  const { bookname, email, price, address, order_status, _id } = order || {};
   const updateStatus = async (id, status) => {
     try {
       await axios.put(`${import.meta.env.VITE_API_URL}/orders/status/${id}`, {

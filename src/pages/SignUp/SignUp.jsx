@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { useForm } from "react-hook-form";
-import { imageUpload } from "../../../Utilites";
+import { imageUpload, saveOrUpdateUser } from "../../../Utilites";
 
 const SignUp = () => {
   const {
@@ -27,6 +27,7 @@ const SignUp = () => {
       const imageURL = await imageUpload(imgFile);
       //2. User Registration
       const result = await createUser(email, password);
+      await saveOrUpdateUser({ name, email, image: imageURL });
 
       //3. Save username & profile photo
       await updateUserProfile(name, imageURL);
@@ -43,7 +44,12 @@ const SignUp = () => {
   const handleGoogleSignIn = async () => {
     try {
       //User Registration using google
-      await signInWithGoogle();
+      const { user } = await signInWithGoogle();
+      await saveOrUpdateUser({
+        name: user?.displayName,
+        email: user?.email,
+        image: user?.photoURL,
+      });
 
       navigate(from, { replace: true });
       toast.success("Signup Successful");
@@ -160,7 +166,7 @@ const SignUp = () => {
                   pattern: {
                     value:
                       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
-                    message: "Invalid password!",
+                    message: "Invalid password!Password must be stronge",
                   },
                 })}
               />

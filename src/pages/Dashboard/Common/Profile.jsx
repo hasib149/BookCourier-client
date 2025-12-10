@@ -2,6 +2,8 @@ import useAuth from "../../../hooks/useAuth";
 import coverImg from "../../../assets/images/cover.jpg";
 import { useState } from "react";
 import UpdateProfileModal from "../../../components/Modal/UpdateProfileModal";
+import useRole from "../../../hooks/useRole";
+import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 
 const Profile = () => {
   let [isOpen, setIsOpen] = useState(false);
@@ -10,7 +12,10 @@ const Profile = () => {
   };
 
   const { user } = useAuth();
+  const [role, isRoleLoading] = useRole();
 
+  if (isRoleLoading) return <LoadingSpinner></LoadingSpinner>;
+  
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="bg-white shadow-lg rounded-2xl md:w-4/5 lg:w-3/5">
@@ -29,7 +34,7 @@ const Profile = () => {
           </a>
 
           <p className="p-2 px-4 text-xs text-white bg-blue-500 rounded-full">
-            Customer
+            {role}
           </p>
           <p className="mt-2 text-xl font-medium text-gray-800 ">
             <span className="text-blue-500">User Id:</span> {user?.uid}
