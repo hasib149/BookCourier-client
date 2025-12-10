@@ -4,7 +4,7 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
-import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import ManageUsers from "../pages/Dashboard/Admin/ManageBooks";
 import Profile from "../pages/Dashboard/Common/Profile";
 import Statistics from "../pages/Dashboard/Common/Statistics";
 import MainLayout from "../layouts/MainLayout";
@@ -79,7 +79,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "manage-users",
+        path: "manage-books",
         element: (
           <PrivateRoute>
             <ManageUsers />

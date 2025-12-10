@@ -1,21 +1,18 @@
-import React from "react";
-import UsersDataRow from "../../../components/Dashboard/TableRows/UsersDataRow";
 import { useQuery } from "@tanstack/react-query";
+import UserDataRow from "../../../components/Dashboard/TableRows/UserDataRow";
 import axios from "axios";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
-import useAuth from "../../../hooks/useAuth";
 
-const AllUser = () => {
-  const { user } = useAuth();
+const ManageBooks = () => {
   const {
-    data: users = [],
+    data: books = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["users", user?.email],
+    queryKey: ["books"],
     queryFn: async () => {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/alluser/${user.email}`
+        `${import.meta.env.VITE_API_URL}/adminbooks`
       );
       return data;
     },
@@ -27,7 +24,7 @@ const AllUser = () => {
       <div className="container mx-auto px-4 sm:px-8">
         <div className="py-8">
           <h2 className="text-3xl text-center font-semibold text-blue-700 mb-6">
-            All Users Are Here{" "}
+            All Books Are Here{" "}
           </h2>
 
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
@@ -36,30 +33,32 @@ const AllUser = () => {
                 <thead>
                   <tr className="bg-sky-200">
                     <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
-                      User
+                      book image
                     </th>
                     <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
-                      User name
+                      book name
                     </th>
                     <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
-                      Role
+                      category
                     </th>
                     <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
-                      last_loggedIn
+                      price
+                    </th>
+                    <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
+                      status
                     </th>
                     <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
                       Action
+                    </th>
+                    <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
+                      Delete
                     </th>
                   </tr>
                 </thead>
 
                 <tbody className="divide-y divide-blue-100">
-                  {users.map((user) => (
-                    <UsersDataRow
-                      key={user._id}
-                      refetch={refetch}
-                      user={user}
-                    />
+                  {books.map((book) => (
+                    <UserDataRow key={book._id} book={book} refetch={refetch} />
                   ))}
                 </tbody>
               </table>
@@ -71,4 +70,4 @@ const AllUser = () => {
   );
 };
 
-export default AllUser;
+export default ManageBooks;
