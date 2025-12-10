@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 
-const CustomerOrderDataRow = ({ order }) => {
+const CustomerOrderDataRow = ({ order, refetch }) => {
   const {
     _id,
     bookname,
@@ -19,6 +19,7 @@ const CustomerOrderDataRow = ({ order }) => {
   const handleCancel = async () => {
     await axios.patch(`${import.meta.env.VITE_API_URL}/cancel-order/${_id}`);
     toast.success("Order Cancelled!");
+    refetch();
   };
 
   // payment
@@ -32,7 +33,7 @@ const CustomerOrderDataRow = ({ order }) => {
         order_status,
         payment_status,
         quantity: 1,
-        price: Number(price), 
+        price: Number(price),
         customer: {
           name: user?.displayName,
           email: user?.email,
@@ -45,7 +46,7 @@ const CustomerOrderDataRow = ({ order }) => {
         paymentInfo
       );
       if (data?.url) {
-        window.location.href = data.url; 
+        window.location.href = data.url;
       } else {
         console.error("Checkout URL not found:", data);
       }

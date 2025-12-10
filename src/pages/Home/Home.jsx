@@ -8,7 +8,7 @@ import LatestBooks from "../../components/Home/LatestBooks/LatestBooks";
 
 const Home = () => {
   return (
-    <div className="-mt-6">
+    <div className="-mt-24">
       {/* banner */}
       <Banner></Banner>
       {/* Latest Books Section by database */}

@@ -19,6 +19,7 @@ import Invoices from "../pages/Dashboard/Customer/Invoices/Invoices";
 import EditBook from "../pages/Dashboard/Librarian/EditBook";
 import Orders from "../pages/Dashboard/Librarian/Orders";
 import AllUser from "../pages/Dashboard/Admin/AllUser";
+import MyWishList from "../pages/Dashboard/Customer/MyWishList/MyWishList";
 
 export const router = createBrowserRouter([
   {
@@ -75,6 +76,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyBooks />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-wishlist",
+        element: (
+          <PrivateRoute>
+            <MyWishList />
           </PrivateRoute>
         ),
       },

@@ -101,7 +101,7 @@ const UserDataRow = ({ book, refetch }) => {
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <button
           onClick={handleDelete}
-          className="px-3 py-1 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition"
+          className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
         >
           delete
         </button>

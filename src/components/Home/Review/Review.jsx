@@ -1,6 +1,7 @@
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ReviewCard from "./ReviewCard";
+
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -31,40 +32,64 @@ const Review = () => {
     { bookname: "War and Peace", author: "Leo Tolstoy", rating: 4.4 },
   ];
 
+  // Auto detect mobile screen
+  const isMobile = window.innerWidth < 640;
+
   return (
     <div className="mb-16">
-      <div className="text-center  p-8 rounded-lg max-w-3xl mx-auto mt-16 mb-16">
+      <div className="text-center p-8 rounded-lg max-w-3xl mx-auto mt-16 mb-16">
         <h2 className="text-4xl font-bold text-blue-700 mb-3">
-            Customers most <span className="text-sky-600">favoruite book</span>
+          Customers most <span className="text-sky-600">favourite book</span>
         </h2>
         <p className="text-lg text-gray-600">
           Enhance posture, mobility, and well-being effortlessly with Posture
-          Pro. Achieve proper alignment, reduce pain, and strengthen your body
-          with ease!
+          Pro.
         </p>
       </div>
 
+      {/* Swiper */}
       <Swiper
-        effect={"coverflow"}
+        effect={isMobile ? "slide" : "coverflow"}
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={Math.min(3, reviewDatas.length)}
         loop={reviewDatas.length > 3}
         coverflowEffect={{
-          rotate: 50,
-          stretch: 1,
-          depth: 200,
-          modifier: 1,
-          scale: 0.75,
+          rotate: 40,
+          stretch: 0,
+          depth: 150,
+          modifier: 0.85,
+          scale: 1, // safer for mobile/tablet
           slideShadows: true,
         }}
         autoplay={{
-          delay: 1500,
+          delay: 2000,
           disableOnInteraction: false,
         }}
         pagination={{ clickable: true }}
         modules={[EffectCoverflow, Pagination, Autoplay]}
-        className="mySwiper"
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          480: {
+            slidesPerView: 1.2,
+            spaceBetween: 15,
+          },
+          640: {
+            slidesPerView: 1.7,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2.2,
+            spaceBetween: 25,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        }}
+        className="mySwiper px-4 overflow-hidden"
       >
         {reviewDatas.map((reviewdata, index) => (
           <SwiperSlide key={index}>

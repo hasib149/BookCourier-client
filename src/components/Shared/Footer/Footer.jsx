@@ -1,20 +1,18 @@
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { SiX } from "react-icons/si";
 import Container from "../Container";
 
 const Footer = () => {
   return (
-    <footer className="bg-linear-to-r from-blue-500 to-blue-700 text-white px-8 py-12">
+    <footer className="bg-linear-to-r from-blue-500 to-blue-700 text-white px-6 py-12">
       <Container>
-        {" "}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="hover:underline">
+                <a href="/" className="hover:underline">
                   Home
                 </a>
               </li>
@@ -25,7 +23,7 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#" className="hover:underline">
-                  Services
+                  All Books
                 </a>
               </li>
               <li>
@@ -47,42 +45,42 @@ const Footer = () => {
           </div>
 
           {/* Social Icons */}
-          <div className="ml-40">
+          <div>
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
-            <div className="flex flex-col gap-2 text-lg">
+            <div className="flex flex-col gap-3 text-lg">
               <a
                 href="#"
-                className="hover:text-gray-300 flex gap-1 items-center"
+                className="hover:text-gray-300 flex gap-2 items-center"
               >
                 <FaFacebookF /> Facebook
               </a>
               <a
                 href="#"
-                className="hover:text-gray-300 flex gap-1 items-center"
+                className="hover:text-gray-300 flex gap-2 items-center"
               >
                 <FaInstagram /> Instagram
               </a>
               <a
                 href="#"
-                className="hover:text-gray-300 flex gap-1 items-center"
+                className="hover:text-gray-300 flex gap-2 items-center"
               >
                 <FaLinkedinIn /> Linkedin
               </a>
               <a
                 href="#"
-                className="hover:text-gray-300 flex gap-1 items-center"
+                className="hover:text-gray-300 flex gap-2 items-center"
               >
-                <FaXTwitter />
-                Linkedin
+                <FaXTwitter /> Twitter
               </a>
             </div>
           </div>
         </div>
+
         {/* Copyright */}
-        <div className="mt-10 text-center text-sm text-gray-200">
+        <div className="mt-10 text-center text-xs sm:text-sm text-gray-200">
           © {new Date().getFullYear()} Your Company. All rights reserved.
         </div>
-      </Container>{" "}
+      </Container>
     </footer>
   );
 };

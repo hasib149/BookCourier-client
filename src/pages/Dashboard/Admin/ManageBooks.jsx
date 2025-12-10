@@ -28,9 +28,9 @@ const ManageBooks = () => {
           </h2>
 
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div className="inline-block min-w-full  rounded-lg overflow-hidden border border-blue-100">
-              <table className="min-w-full leading-normal">
-                <thead>
+            <div className=" inline-block min-w-full  rounded-lg overflow-hidden border border-blue-100">
+              <table className="min-w-full leading-normal ">
+                <thead className="">
                   <tr className="bg-sky-200">
                     <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
                       book image

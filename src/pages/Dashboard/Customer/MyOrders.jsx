@@ -20,56 +20,54 @@ const MyOrders = () => {
     },
   });
 
-  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+  if (isLoading) return <LoadingSpinner />;
 
   return (
-    <>
-      <div className="container mx-auto px-4 sm:px-8">
-        <div className="py-8">
-          <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-              <table className="min-w-full leading-normal">
-                <thead>
-                  <tr>
-                    <th className="px-5 py-3 bg-sky-200 border-b border-blue-200 text-blue-700 text-left text-sm uppercase font-semibold tracking-wider">
-                      Book Title
-                    </th>
+    <div className="container mx-auto px-2 sm:px-6 lg:px-8">
+      <div className="py-6 sm:py-10">
+        <div className="overflow-x-auto shadow-md rounded-lg border border-blue-200">
+          <table className="min-w-full divide-y divide-blue-200">
+            <thead className="bg-sky-200">
+              <tr>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-blue-700 uppercase tracking-wider">
+                  Book Title
+                </th>
 
-                    <th className="px-5 py-3 bg-sky-200 border-b border-blue-200 text-blue-700 text-left text-sm uppercase font-semibold tracking-wider">
-                      Order Date
-                    </th>
-                    <th className="px-5 py-3 bg-sky-200 border-b border-blue-200 text-blue-700 text-left text-sm uppercase font-semibold tracking-wider">
-                      Price
-                    </th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-blue-700 uppercase tracking-wider">
+                  Order Date
+                </th>
 
-                    <th className="px-5 py-3 bg-sky-200 border-b border-blue-200 text-blue-700 text-left text-sm uppercase font-semibold tracking-wider">
-                      Processing
-                    </th>
-                    <th className="px-5 py-3 bg-sky-200 border-b border-blue-200 text-blue-700 text-left text-sm uppercase font-semibold tracking-wider">
-                      Status
-                    </th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-blue-700 uppercase tracking-wider">
+                  Price
+                </th>
 
-                    <th className="px-5 py-3 bg-sky-200 border-b border-blue-200 text-blue-700 text-left text-sm uppercase font-semibold tracking-wider">
-                      Action
-                    </th>
-                  </tr>
-                </thead>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-blue-700 uppercase tracking-wider">
+                  Processing
+                </th>
 
-                <tbody>
-                  {orders.map((order) => (
-                    <CustomerOrderDataRow
-                      key={order._id}
-                      order={order}
-                      refetch={refetch}
-                    />
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-blue-700 uppercase tracking-wider">
+                  Status
+                </th>
+
+                <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-blue-700 uppercase tracking-wider">
+                  Action
+                </th>
+              </tr>
+            </thead>
+
+            <tbody className="bg-white divide-y divide-blue-100">
+              {orders.map((order) => (
+                <CustomerOrderDataRow
+                  key={order._id}
+                  order={order}
+                  refetch={refetch}
+                />
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

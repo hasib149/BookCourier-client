@@ -3,9 +3,9 @@ import { Link } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 // Icons
 import { GrLogout } from "react-icons/gr";
-import { FcSettings } from "react-icons/fc";
 import { AiOutlineBars } from "react-icons/ai";
 import { BsGraphUp } from "react-icons/bs";
+import { CgProfile } from "react-icons/cg";
 
 // User Menu
 import MenuItem from "./Menu/MenuItem";
@@ -13,22 +13,26 @@ import AdminMenu from "./Menu/AdminMenu";
 import CustomerMenu from "./Menu/CustomerMenu";
 import Logo from "../../Shared/Logo";
 import LibrarianMenu from "./Menu/LibrarianMenu";
+import useRole from "../../../hooks/useRole";
+import LoadingSpinner from "../../Shared/LoadingSpinner";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
   const [isActive, setActive] = useState(false);
+  const [role, isRoleLoading] = useRole();
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive);
   };
+  if (isRoleLoading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <>
       {/* Small Screen Navbar, only visible till md breakpoint */}
       <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden">
         <div>
-          <div className="block cursor-pointer p-4 font-bold">
+          <div className="block cursor-pointer bg-blue-500 p-4 font-bold">
             <Link to="/">
               <Logo></Logo>
             </Link>
@@ -65,27 +69,36 @@ const Sidebar = () => {
             {/*  Menu Items */}
             <nav>
               {/* Common Menu */}
-              <MenuItem
+              {/* <MenuItem
                 icon={BsGraphUp}
                 label="Statistics"
                 address="/dashboard"
-              />
+              /> */}
               {/* Role-Based Menu */}
-              <CustomerMenu />
-              <LibrarianMenu />
-              <AdminMenu />
+              {role === "Customer" && <CustomerMenu />}
+              {role === "Librarian" && <LibrarianMenu />}
+              {role === "Admin" && <AdminMenu />}
             </nav>
           </div>
 
           {/* Bottom Content */}
           <div>
             <hr />
+            {role === "Customer" && (
+              <MenuItem
+                icon={CgProfile}
+                label="Profile"
+                address="/dashboard/profile"
+              />
+            )}
+            {role === "Admin" && (
+              <MenuItem
+                icon={CgProfile}
+                label="Profile"
+                address="/dashboard/profile"
+              />
+            )}
 
-            <MenuItem
-              icon={FcSettings}
-              label="Profile"
-              address="/dashboard/profile"
-            />
             <button
               onClick={logOut}
               className="flex cursor-pointer w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-blue-500   hover:text-gray-700 transition-colors duration-300 transform"
