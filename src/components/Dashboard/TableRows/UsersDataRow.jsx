@@ -1,8 +1,19 @@
+import axios from "axios";
 import React from "react";
+import toast from "react-hot-toast";
 
 const UsersDataRow = ({ user }) => {
-  console.log(user);
-  const { role, email, last_loggedIn, name } = user;
+  const { role, email, last_loggedIn, name, _id } = user;
+  //   make liberian
+  const handleLibrarian = async () => {
+    await axios.patch(`${import.meta.env.VITE_API_URL}/userRole/${_id}`);
+    toast.success(" User promoted to Librarian successfully!");
+  };
+  //   make admin
+  const handleAdmin = async () => {
+    await axios.patch(`${import.meta.env.VITE_API_URL}/userRoles/${_id}`);
+    toast.success(" User promoted to Librarian successfully!");
+  };
 
   return (
     <tr>
@@ -20,11 +31,17 @@ const UsersDataRow = ({ user }) => {
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <div className="flex items-center gap-3">
-          <button className="px-3 py-0.5 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">
+          <button
+            onClick={handleLibrarian}
+            className="px-3 py-0.5 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+          >
             Make Librarian
           </button>
 
-          <button className="px-3 py-.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+          <button
+            onClick={handleAdmin}
+            className="px-3 py-.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+          >
             Make Admin
           </button>
         </div>

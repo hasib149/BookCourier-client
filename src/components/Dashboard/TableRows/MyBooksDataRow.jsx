@@ -6,11 +6,10 @@ import { Link } from "react-router";
 const MyBooksDataRow = ({ book }) => {
   console.log(book);
   const { image, name, status, _id } = book;
-  const handleCancel = async () => {
+  const handleUnpublished = async () => {
     await axios.patch(`${import.meta.env.VITE_API_URL}/status-update/${_id}`);
     toast.success(`${name}, unpublished successfully!`);
   };
-  
 
   return (
     <tr>
@@ -37,7 +36,7 @@ const MyBooksDataRow = ({ book }) => {
         </Link>
 
         <button
-          onClick={handleCancel}
+          onClick={handleUnpublished}
           className="bg-blue-400 py-2 text-white px-3 rounded-lg"
         >
           Unpublished
