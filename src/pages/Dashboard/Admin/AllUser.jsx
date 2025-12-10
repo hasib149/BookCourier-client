@@ -1,21 +1,18 @@
 import React from "react";
 import UsersDataRow from "../../../components/Dashboard/TableRows/UsersDataRow";
-import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 
 const AllUser = () => {
-  const { user } = useAuth();
   const {
     data: users = [],
     isLoading,
-    refetch,
   } = useQuery({
-    queryKey: ["users", user?.email],
+    queryKey: ["users", ],
     queryFn: async () => {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/alluser/${user?.email}`
+        `${import.meta.env.VITE_API_URL}/alluser`
       );
       return data;
     },
@@ -39,10 +36,13 @@ const AllUser = () => {
                       User
                     </th>
                     <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
-                     user name
+                      User name
                     </th>
                     <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
-                      Action
+                      Role
+                    </th>
+                    <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
+                      last_loggedIn
                     </th>
                     <th className="px-5 py-3 border-b border-blue-100 text-blue-700 text-left text-sm uppercase font-medium">
                       Action
