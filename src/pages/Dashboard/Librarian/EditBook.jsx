@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 import { imageUpload } from "../../../../Utilites";
-import ErrorPage from "../../ErrorPage";
 import toast from "react-hot-toast";
 
 const EditBook = () => {
@@ -25,7 +24,6 @@ const EditBook = () => {
       reset({
         title: book.name,
         author: book.author,
-        image: book.image,
         category: book.category,
         status: book.status,
         description: book.description,
@@ -47,11 +45,7 @@ const EditBook = () => {
       ),
     onSuccess: (data) => {
       console.log(data);
-      // show toast
-      toast.success("Book updated successfully");
-      // navigate to my inventory page
       mutationReset();
-      // Query key invalidate
     },
     onError: (error) => {
       console.log(error);
@@ -68,21 +62,31 @@ const EditBook = () => {
 
   const onSubmit = async (data) => {
     const { title, author, status, description, price, category, image } = data;
-    const imageFile = image[0];
+
+    let imageURL = book.image;
+    console.log(image);
+    if (image && image.length > 0) {
+      try {
+        const imageFile = image[0];
+        imageURL = await imageUpload(imageFile);
+      } catch (error) {
+        console.log("Image upload error:", error);
+      }
+    }
+
+    const bookData = {
+      image: imageURL,
+      name: title,
+      author,
+      status,
+      description,
+      price: Number(price),
+      category,
+    };
 
     try {
-      const imageURL = await imageUpload(imageFile);
-      const bookData = {
-        image: imageURL,
-        name: title,
-        author,
-        status,
-        description,
-        price: Number(price),
-        category,
-      };
       await mutateAsync(bookData);
-      reset();
+      toast.success("Book updated successfully");
     } catch (error) {
       console.log(error);
     }
