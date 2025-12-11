@@ -35,14 +35,14 @@ const UsersDataRow = ({ user, refetch }) => {
         <div className="flex items-center gap-3">
           <button
             onClick={handleLibrarian}
-            className="px-3 py-0.5 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+            className="px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
           >
             Make Librarian
           </button>
 
           <button
             onClick={handleAdmin}
-            className="px-3 py-.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+            className="px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
           >
             Make Admin
           </button>

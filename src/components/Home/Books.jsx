@@ -61,7 +61,7 @@ const Books = () => {
   return (
     <Container>
       <div>
-        <div className="flex flex-col mt-12 md:flex-row justify-between  items-center gap-4 ">
+        <div className="flex px-4 flex-col mt-12 md:flex-row justify-between  items-center gap-4 ">
           {/* SEARCH FORM */}
           <form
             onSubmit={handleSubmit(onSubmit)}
