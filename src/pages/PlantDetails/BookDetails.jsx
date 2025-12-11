@@ -88,7 +88,7 @@ const BookDetails = () => {
 
     try {
       await axios.post(`${import.meta.env.VITE_API_URL}/api/wishlist`, {
-        userId: user?.localId,
+        useremail: user?.email,
         bookId: book._id,
         bookname: book.name,
         image: book.image,
@@ -96,6 +96,8 @@ const BookDetails = () => {
         price: book.price,
         quantity: book.quantity,
         description: book.description,
+        status: book.status,
+        author: book.author,
       });
       toast.success("Book added to wishlist");
     } catch (err) {
