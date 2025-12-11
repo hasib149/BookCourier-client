@@ -175,13 +175,13 @@ const PurchaseModal = ({ closeModal, isOpen, book }) => {
               <div className="flex mt-4 justify-around">
                 <button
                   type="submit"
-                  className="cursor-pointer inline-flex justify-center rounded-md bg-blue-100 px-4 py-2 text-sm font-medium hover:text-blue-700"
+                  className="btn hover:bg-blue-500 hover:text-white border border-blue-600"
                 >
                   Place Order
                 </button>
                 <button
                   type="button"
-                  className="cursor-pointer inline-flex justify-center rounded-md bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200"
+                  className="btn hover:bg-red-500 hover:text-white border border-red-600"
                   onClick={closeModal}
                 >
                   Cancel

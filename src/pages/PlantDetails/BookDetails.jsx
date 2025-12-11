@@ -1,6 +1,5 @@
 import Container from "../../components/Shared/Container";
 import Heading from "../../components/Shared/Heading";
-import Button from "../../components/Shared/Button/Button";
 import PurchaseModal from "../../components/Modal/PurchaseModal";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 import { useState } from "react";
@@ -9,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -63,7 +63,7 @@ const BookDetails = () => {
     }
   );
 
-  console.log(user.displayName);
+  console.log(user);
   // Review form
   const { register, handleSubmit, reset } = useForm();
 
@@ -77,6 +77,31 @@ const BookDetails = () => {
     });
     reset();
     refetchReviews();
+  };
+
+  // wishlist
+  const addToWishlist = async () => {
+    if (!user) {
+      toast.error("Please log in to add to wishlist");
+      return;
+    }
+
+    try {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/wishlist`, {
+        userId: user?.localId,
+        bookId: book._id,
+        bookname: book.name,
+        image: book.image,
+        category: book.category,
+        price: book.price,
+        quantity: book.quantity,
+        description: book.description,
+      });
+      toast.success("Book added to wishlist");
+    } catch (err) {
+      console.error(err);
+      toast.error(err.response?.data?.message || "Something went wrong");
+    }
   };
 
   const closeModal = () => setIsOpen(false);
@@ -101,9 +126,7 @@ const BookDetails = () => {
         <div className="md:gap-10 flex-1">
           <Heading title={name} subtitle={`Category: ${category}`} />
           <hr className="my-6" />
-          <div className="text-lg font-light text-neutral-500">
-            {description}
-          </div>
+          <div className="text-lg font-light ">{description}</div>
           <hr className="my-6" />
 
           <div className="text-xl font-semibold flex flex-row items-center gap-2">
@@ -119,14 +142,29 @@ const BookDetails = () => {
           </div>
           <hr className="my-6" />
           <div>
-            <p className="gap-4 font-light text-neutral-500">
+            <p className="gap-4 font-light ">
               Quantity: {quantity} Units Left Only!
             </p>
           </div>
           <hr className="my-6" />
           <div className="flex justify-between">
-            <p className="font-bold text-3xl text-gray-500">Price: {price}$</p>
-            <Button onClick={() => setIsOpen(true)} label="Order Now" />
+            <p className="font-bold text-3xl ">Price: {price}$</p>
+            <div className="flex gap-6">
+              <button
+                className="btn hover:bg-blue-500 hover:text-white border border-blue-600"
+                onClick={() => setIsOpen(true)}
+              >
+                Order Now
+              </button>
+              <button
+                className="btn hover:bg-blue-500 hover:text-white border border-blue-600"
+                onClick={addToWishlist}
+              >
+                Add to Wishlist
+              </button>
+              {/* <Button onClick={() => setIsOpen(true)} label="Order Now" /> */}
+              {/* <Button onClick={() => setIsOpen(true)} label="Add To Wishlist" /> */}
+            </div>
           </div>
           <hr className="my-6" />
 
@@ -161,7 +199,7 @@ const BookDetails = () => {
               ></textarea>
               <button
                 type="submit"
-                className="bg-green-600 text-white px-4 py-2 rounded mt-2"
+                className="btn mt-3 hover:bg-blue-500 hover:text-white border border-blue-600"
               >
                 Submit Review
               </button>
