@@ -1,18 +1,20 @@
-import axios from "axios";
 import React from "react";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const UsersDataRow = ({ user, refetch }) => {
+  const axiosSecure = useAxiosSecure();
+
   const { role, email, last_loggedIn, name, _id } = user;
   //   make liberian
   const handleLibrarian = async () => {
-    await axios.patch(`${import.meta.env.VITE_API_URL}/userRole/${_id}`);
+    await axiosSecure.patch(`/userRole/${_id}`);
     toast.success(" User promoted to Librarian successfully!");
     refetch();
   };
   //   make admin
   const handleAdmin = async () => {
-    await axios.patch(`${import.meta.env.VITE_API_URL}/userRoles/${_id}`);
+    await axiosSecure.patch(`/userRoles/${_id}`);
     toast.success(" User promoted to Librarian successfully!");
     refetch();
   };

@@ -1,12 +1,14 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import useAuth from "../../../../hooks/useAuth";
 import LoadingSpinner from "../../../../components/Shared/LoadingSpinner";
 import InvoicesOrderData from "../../../../components/Dashboard/TableRows/InvoicesOrderData";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const Invoices = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+
   const {
     data: invoices = [],
     isLoading,
@@ -14,9 +16,7 @@ const Invoices = () => {
   } = useQuery({
     queryKey: ["invoice", user?.email],
     queryFn: async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/invoices/${user?.email}`
-      );
+      const { data } = await axiosSecure.get(`/invoices`);
       return data;
     },
   });

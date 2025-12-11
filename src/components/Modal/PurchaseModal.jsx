@@ -1,14 +1,15 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import useAuth from "../../hooks/useAuth";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import LoadingSpinner from "../Shared/LoadingSpinner";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const PurchaseModal = ({ closeModal, isOpen, book }) => {
   console.log(book);
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   const {
     isPending,
@@ -16,7 +17,7 @@ const PurchaseModal = ({ closeModal, isOpen, book }) => {
     reset: mutationReset,
   } = useMutation({
     mutationFn: async (order) =>
-      await axios.post(`${import.meta.env.VITE_API_URL}/customer-order`, order),
+      await axiosSecure.post(`/customer-order`, order),
     onSuccess: () => {
       toast.success("Order added successfully!");
       mutationReset();

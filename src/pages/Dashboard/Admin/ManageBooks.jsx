@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import UserDataRow from "../../../components/Dashboard/TableRows/UserDataRow";
-import axios from "axios";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageBooks = () => {
+  const axiosSecure = useAxiosSecure();
+
   const {
     data: books = [],
     isLoading,
@@ -11,9 +13,7 @@ const ManageBooks = () => {
   } = useQuery({
     queryKey: ["books"],
     queryFn: async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/adminbooks`
-      );
+      const { data } = await axiosSecure.get(`/adminbooks`);
       return data;
     },
   });

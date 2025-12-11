@@ -1,26 +1,24 @@
-import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const UserDataRow = ({ book, refetch }) => {
-  console.log(book);
+  const axiosSecure = useAxiosSecure();
+
   const { category, price, status, name, image, _id } = book;
   // handle unpublish
   const handlePublished = async () => {
-    await axios.patch(`${import.meta.env.VITE_API_URL}/userstatus/${_id}`);
+    await axiosSecure.patch(`/userstatus/${_id}`);
     toast.success(" User status published to unpublished successfully!");
     refetch();
   };
 
   // handle published
   const handleUnpublished = async () => {
-    await axios.patch(
-      `${import.meta.env.VITE_API_URL}/userstatusunpublish/${_id}`
-    );
+    await axiosSecure.patch(`/userstatusunpublish/${_id}`);
     toast.success(" User status unpublished to published successfully!");
     refetch();
   };
-
 
   const handleDelete = async () => {
     Swal.fire({
@@ -34,9 +32,7 @@ const UserDataRow = ({ book, refetch }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await axios.delete(
-            `${import.meta.env.VITE_API_URL}/booksupdate/${_id}`
-          );
+          const res = await axiosSecure.delete(`/booksupdate/${_id}`);
 
           if (res.data.success) {
             Swal.fire({

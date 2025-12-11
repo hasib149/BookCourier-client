@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import MyBooksDataRow from "../../../components/Dashboard/TableRows/MyBooksDataRow";
 import useAuth from "../../../hooks/useAuth";
-import axios from "axios";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyBooks = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+
   const {
     data: books = [],
     isLoading,
@@ -13,9 +15,7 @@ const MyBooks = () => {
   } = useQuery({
     queryKey: ["books", user?.email],
     queryFn: async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/my-books/${user?.email}`
-      );
+      const { data } = await axiosSecure.get(`/my-books`);
       return data;
     },
   });

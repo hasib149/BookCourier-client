@@ -1,20 +1,20 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 import { imageUpload } from "../../../../Utilites";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const EditBook = () => {
+  const axiosSecure = useAxiosSecure();
+
   const { id } = useParams();
   const { data: book = {} } = useQuery({
     queryKey: ["books", id],
     queryFn: async () => {
-      const result = await axios(
-        `${import.meta.env.VITE_API_URL}/editBooks/${id}`
-      );
+      const result = await axiosSecure(`/editBooks/${id}`);
       return result.data;
     },
   });
@@ -39,10 +39,7 @@ const EditBook = () => {
     reset: mutationReset,
   } = useMutation({
     mutationFn: async (paylod) =>
-      await axios.put(
-        `${import.meta.env.VITE_API_URL}/book-edit/${id}`,
-        paylod
-      ),
+      await axiosSecure.put(`/book-edit/${id}`, paylod),
     onSuccess: (data) => {
       console.log(data);
       mutationReset();
@@ -64,7 +61,6 @@ const EditBook = () => {
     const { title, author, status, description, price, category, image } = data;
 
     let imageURL = book.image;
-    console.log(image);
     if (image && image.length > 0) {
       try {
         const imageFile = image[0];

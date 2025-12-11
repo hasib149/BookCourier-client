@@ -1,13 +1,14 @@
-import axios from "axios";
 import React from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyBooksDataRow = ({ book, refetch }) => {
-  console.log(book);
+  const axiosSecure = useAxiosSecure();
+
   const { image, name, status, _id } = book;
   const handleUnpublished = async () => {
-    await axios.patch(`${import.meta.env.VITE_API_URL}/status-update/${_id}`);
+    await axiosSecure.patch(`/status-update/${_id}`);
     toast.success(`${name}, unpublished successfully!`);
     refetch();
   };

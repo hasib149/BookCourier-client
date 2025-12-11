@@ -3,13 +3,14 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
 import { imageUpload } from "../../../Utilites";
 import LoadingSpinner from "../Shared/LoadingSpinner";
 import ErrorPage from "../../pages/ErrorPage";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AddBookForm = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   const {
     isPending,
@@ -17,8 +18,7 @@ const AddBookForm = () => {
     mutateAsync,
     reset: mutationReset,
   } = useMutation({
-    mutationFn: async (paylod) =>
-      await axios.post(`${import.meta.env.VITE_API_URL}/books`, paylod),
+    mutationFn: async (paylod) => await axiosSecure.post(`/books`, paylod),
     onSuccess: (data) => {
       console.log(data);
       // show toast

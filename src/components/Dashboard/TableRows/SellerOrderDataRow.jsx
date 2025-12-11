@@ -1,14 +1,13 @@
-// import { useState } from "react";
 import Swal from "sweetalert2";
 import DeleteModal from "../../Modal/DeleteModal";
-import axios from "axios";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 const SellerOrderDataRow = ({ order, refetch }) => {
-  // let [isOpen, setIsOpen] = useState(false);
-  // const closeModal = () => setIsOpen(false);
+  const axiosSecure = useAxiosSecure();
+
   const { bookname, email, price, address, order_status, _id } = order || {};
   const updateStatus = async (id, status) => {
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/orders/status/${id}`, {
+      await axiosSecure.put(`/orders/status/${id}`, {
         status,
       });
       refetch();
@@ -30,9 +29,7 @@ const SellerOrderDataRow = ({ order, refetch }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.patch(
-            `${import.meta.env.VITE_API_URL}/orders/cancel/${_id}`
-          );
+          await axiosSecure.patch(`/orders/cancel/${_id}`);
 
           Swal.fire({
             title: "Cancelled!",
