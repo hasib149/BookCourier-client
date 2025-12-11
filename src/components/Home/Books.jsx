@@ -13,7 +13,7 @@ const Books = () => {
 
   // ALL BOOK FETCH
   const { data: books = [], isLoading: isBooksLoading } = useQuery({
-    queryKey: ["books"],
+    queryKey: ["allbooks"],
     queryFn: async () => {
       const result = await axios.get(`${import.meta.env.VITE_API_URL}/books`);
       return result.data;
@@ -24,7 +24,6 @@ const Books = () => {
   const {
     data: filteredBooks = [],
     isLoading: isSearching,
-    refetch: refetchSearch,
   } = useQuery({
     queryKey: ["searchBooks", searchText],
     queryFn: async () => {
@@ -34,12 +33,12 @@ const Books = () => {
       });
       return result.data;
     },
-    enabled: false,
+    enabled: !!searchText,
   });
 
   const onSubmit = (data) => {
     setSearchText(data.searchfield);
-    refetchSearch();
+    // refetchSearch();
   };
 
   // SORTED BOOKS

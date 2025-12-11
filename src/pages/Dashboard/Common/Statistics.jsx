@@ -10,9 +10,9 @@ const Statistics = () => {
     <div>
       {/* <AdminStatistics /> */}
 
-      {role === "Customer" && <MyOrders></MyOrders>}
-      {role === "Librarian" && <Orders></Orders>}
-      {role === "Admin" && <AllUser />}
+      {role === "customer" && <MyOrders></MyOrders>}
+      {role === "librarian" && <Orders></Orders>}
+      {role === "admin" && <AllUser />}
     </div>
   );
 };

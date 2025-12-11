@@ -75,23 +75,23 @@ const Sidebar = () => {
                 address="/dashboard"
               /> */}
               {/* Role-Based Menu */}
-              {role === "Customer" && <CustomerMenu />}
-              {role === "Librarian" && <LibrarianMenu />}
-              {role === "Admin" && <AdminMenu />}
+              {role === "customer" && <CustomerMenu />}
+              {role === "librarian" && <LibrarianMenu />}
+              {role === "admin" && <AdminMenu />}
             </nav>
           </div>
 
           {/* Bottom Content */}
           <div>
             <hr />
-            {role === "Customer" && (
+            {role === "customer" && (
               <MenuItem
                 icon={CgProfile}
                 label="Profile"
                 address="/dashboard/profile"
               />
             )}
-            {role === "Admin" && (
+            {role === "admin" && (
               <MenuItem
                 icon={CgProfile}
                 label="Profile"

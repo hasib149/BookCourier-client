@@ -80,7 +80,7 @@ const SignUp = () => {
                 type="text"
                 id="name"
                 placeholder="Enter Your Name Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
                 {...register("name", {
                   required: "name is requard",
@@ -112,10 +112,10 @@ const SignUp = () => {
       file:mr-4 file:py-2 file:px-4
       file:rounded-md file:border-0
       file:text-sm file:font-semibold
-      file:bg-lime-50 file:text-lime-700
+      file:bg-lime-50 file:text-blue-700
       hover:file:bg-lime-100
-      bg-gray-100 border border-dashed border-lime-300 rounded-md cursor-pointer
-      focus:outline-none focus:ring-2 focus:ring-lime-400 focus:border-lime-400
+      bg-gray-100 border border-dashed border-blue-300 rounded-md cursor-pointer
+      focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400
       py-2"
                 {...register("image", { required: "false" })}
               />
@@ -132,7 +132,7 @@ const SignUp = () => {
                 id="email"
                 required
                 placeholder="Enter Your Email Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
                 {...register("email", {
                   required: "email is requard",
@@ -160,7 +160,7 @@ const SignUp = () => {
                 id="password"
                 required
                 placeholder="*******"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900"
                 {...register("password", {
                   required: "password is requard",
                   pattern: {
@@ -181,7 +181,7 @@ const SignUp = () => {
           <div>
             <button
               type="submit"
-              className="bg-lime-500 w-full rounded-md py-3 text-white"
+              className="bg-blue-500 w-full rounded-md py-3 text-white"
             >
               {loading ? (
                 <TbFidgetSpinner className="animate-spin m-auto" />
@@ -210,7 +210,7 @@ const SignUp = () => {
           Already have an account?{" "}
           <Link
             to="/login"
-            className="hover:underline hover:text-lime-500 text-gray-600"
+            className="hover:underline hover:text-blue-500 text-gray-600"
           >
             Login
           </Link>
