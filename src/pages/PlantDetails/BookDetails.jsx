@@ -151,21 +151,20 @@ const BookDetails = () => {
           <hr className="my-6" />
           <div className="flex justify-between">
             <p className="font-bold text-3xl ">Price: {price}$</p>
-            <div className="flex gap-6">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto">
               <button
-                className="btn hover:bg-blue-500 hover:text-white border border-blue-600"
+                className="btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white"
                 onClick={() => setIsOpen(true)}
               >
                 Order Now
               </button>
+
               <button
-                className="btn hover:bg-blue-500 hover:text-white border border-blue-600"
+                className="btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white"
                 onClick={addToWishlist}
               >
                 Add to Wishlist
               </button>
-              {/* <Button onClick={() => setIsOpen(true)} label="Order Now" /> */}
-              {/* <Button onClick={() => setIsOpen(true)} label="Add To Wishlist" /> */}
             </div>
           </div>
           <hr className="my-6" />

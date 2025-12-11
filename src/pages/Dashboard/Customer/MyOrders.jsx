@@ -23,7 +23,7 @@ const MyOrders = () => {
   if (isLoading) return <LoadingSpinner />;
 
   return (
-    <div className="container mx-auto px-2 sm:px-6 lg:px-8">
+    <div className="container mx-auto bg-blue-50 px-2 sm:px-6 lg:px-8">
       <div className="py-6 sm:py-10">
         <div className="overflow-x-auto shadow-md rounded-lg border border-blue-200">
           <table className="min-w-full divide-y divide-blue-200">

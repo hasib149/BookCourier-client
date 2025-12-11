@@ -21,10 +21,7 @@ const Books = () => {
   });
 
   // SEARCH
-  const {
-    data: filteredBooks = [],
-    isLoading: isSearching,
-  } = useQuery({
+  const { data: filteredBooks = [], isLoading: isSearching } = useQuery({
     queryKey: ["searchBooks", searchText],
     queryFn: async () => {
       if (!searchText) return books;
@@ -61,7 +58,7 @@ const Books = () => {
   return (
     <Container>
       <div>
-        <div className="flex px-4 flex-col mt-12 md:flex-row justify-between  items-center gap-4 ">
+        <div className="flex px-4 flex-col  mt-12 md:flex-row justify-between  items-center gap-4 ">
           {/* SEARCH FORM */}
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -103,7 +100,7 @@ const Books = () => {
           <div>
             <select
               onChange={(e) => setSortOrder(e.target.value)}
-              className="border px-3 py-2 rounded-lg text-blue-700 border-blue-500 shadow bg-white focus:ring-1 focus:ring-blue-400"
+              className="border-2 px-3 py-2 rounded-lg text-blue-700 border-blue-500 shadow bg-white focus:ring-1 focus:ring-blue-400"
             >
               <option value="asc">Price: Low → High</option>
               <option value="desc">Price: High → Low</option>

@@ -18,7 +18,7 @@ const Review = () => {
     },
     { bookname: "Pride and Prejudice", author: "Jane Austen", rating: 4.6 },
     {
-      bookname: "Harry Potter and the Sorcerer's Stone",
+      bookname: "Harry Potter ",
       author: "J.K. Rowling",
       rating: 4.9,
     },
