@@ -20,6 +20,9 @@ import EditBook from "../pages/Dashboard/Librarian/EditBook";
 import Orders from "../pages/Dashboard/Librarian/Orders";
 import AllUser from "../pages/Dashboard/Admin/AllUser";
 import MyWishList from "../pages/Dashboard/Customer/MyWishList/MyWishList";
+import LiberianRoute from "./LiberianRoute";
+import ManageBooks from "../pages/Dashboard/Admin/ManageBooks";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -67,7 +70,9 @@ export const router = createBrowserRouter([
         path: "add-book",
         element: (
           <PrivateRoute>
-            <AddBook />
+            <LiberianRoute>
+              <AddBook />
+            </LiberianRoute>
           </PrivateRoute>
         ),
       },
@@ -75,7 +80,9 @@ export const router = createBrowserRouter([
         path: "my-books",
         element: (
           <PrivateRoute>
-            <MyBooks />
+            <LiberianRoute>
+              <MyBooks />
+            </LiberianRoute>
           </PrivateRoute>
         ),
       },
@@ -91,7 +98,9 @@ export const router = createBrowserRouter([
         path: "manage-books",
         element: (
           <PrivateRoute>
-            <ManageUsers />
+            <AdminRoute>
+              <ManageBooks></ManageBooks>
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -99,7 +108,9 @@ export const router = createBrowserRouter([
         path: "all-users",
         element: (
           <PrivateRoute>
-            <AllUser />
+            <AdminRoute>
+              <AllUser />
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -123,7 +134,9 @@ export const router = createBrowserRouter([
         path: "edit-book/:id",
         element: (
           <PrivateRoute>
-            <EditBook />
+            <LiberianRoute>
+              <EditBook />
+            </LiberianRoute>
           </PrivateRoute>
         ),
       },
@@ -139,7 +152,9 @@ export const router = createBrowserRouter([
         path: "orders",
         element: (
           <PrivateRoute>
-            <Orders />
+            <LiberianRoute>
+              <Orders />
+            </LiberianRoute>
           </PrivateRoute>
         ),
       },

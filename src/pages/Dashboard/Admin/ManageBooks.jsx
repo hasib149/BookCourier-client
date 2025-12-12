@@ -24,7 +24,7 @@ const ManageBooks = () => {
       <div className="container mx-auto px-4 sm:px-8">
         <div className="py-8">
           <h2 className="text-3xl text-center font-semibold text-blue-700 mb-6">
-            All Books Are Here{" "}
+            All Books Are Here
           </h2>
 
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
