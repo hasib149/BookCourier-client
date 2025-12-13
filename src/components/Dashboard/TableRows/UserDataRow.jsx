@@ -9,14 +9,14 @@ const UserDataRow = ({ book, refetch }) => {
   // handle unpublish
   const handlePublished = async () => {
     await axiosSecure.patch(`/userstatus/${_id}`);
-    toast.success(" User status published to unpublished successfully!");
+    toast.success(" User status unpublished to published successfully!");
     refetch();
   };
 
   // handle published
   const handleUnpublished = async () => {
     await axiosSecure.patch(`/userstatusunpublish/${_id}`);
-    toast.success(" User status unpublished to published successfully!");
+    toast.success(" User status published to unpublished successfully!");
     refetch();
   };
 
@@ -81,14 +81,14 @@ const UserDataRow = ({ book, refetch }) => {
         <div className="flex items-center gap-3">
           <button
             onClick={handlePublished}
-            className="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+            className="btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white"
           >
             Publish
           </button>
 
           <button
             onClick={handleUnpublished}
-            className="px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+            className="btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white"
           >
             Unpublish
           </button>
@@ -97,7 +97,7 @@ const UserDataRow = ({ book, refetch }) => {
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <button
           onClick={handleDelete}
-          className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
+          className="btn w-full sm:w-auto border border-red-600 hover:bg-red-600 hover:text-white"
         >
           delete
         </button>

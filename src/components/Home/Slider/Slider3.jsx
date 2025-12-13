@@ -19,7 +19,10 @@ const Slider3 = () => {
               A dystopian novel depicting a totalitarian society under constant
               surveillance and control.
             </p>
-            <Link to="/all-books" className="btn btn-primary">
+            <Link
+              to="/all-books"
+              className="btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white"
+            >
               All Books
             </Link>
           </div>

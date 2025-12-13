@@ -19,7 +19,10 @@ const Slider1 = () => {
               A classic novel of the Jazz Age, exploring themes of wealth, love,
               and the American Dream
             </p>
-            <Link to="/all-books" className="btn btn-primary">
+            <Link
+              to="/all-books"
+              className="btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white"
+            >
               All Books
             </Link>
           </div>

@@ -134,7 +134,7 @@ const Navbar = () => {
             <Link
               to="/login"
               className="
-        bg-blue-400 hover:bg-blue-600 font-semibold text-xl px-3 py-1 rounded-lg text-white
+        btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white
         "
             >
               Login
@@ -143,7 +143,7 @@ const Navbar = () => {
             <Link
               to="/signup"
               className="
-                 bg-blue-400 hover:bg-blue-600 font-semibold text-xl px-3 py-1 rounded-lg text-white
+                btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white
         "
             >
               Register
