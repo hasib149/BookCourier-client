@@ -17,6 +17,7 @@ const UpdateProfileModal = ({ closeModal, isOpen }) => {
     }
 
     await updateUserProfile(name, uploadedImageUrl);
+    
     closeModal();
     reset();
   };

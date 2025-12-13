@@ -7,59 +7,36 @@ import LoadingSpinner from "../Shared/LoadingSpinner";
 import { useForm } from "react-hook-form";
 
 const Books = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+
   const [searchText, setSearchText] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
 
-  // ALL BOOK FETCH
-  const { data: books = [], isLoading: isBooksLoading } = useQuery({
-    queryKey: ["allbooks"],
+  const { data: books = [], isLoading } = useQuery({
+    queryKey: ["books", searchText, sortOrder],
     queryFn: async () => {
-      const result = await axios.get(`${import.meta.env.VITE_API_URL}/books`);
-      return result.data;
-    },
-  });
-
-  // SEARCH
-  const { data: filteredBooks = [], isLoading: isSearching } = useQuery({
-    queryKey: ["searchBooks", searchText],
-    queryFn: async () => {
-      if (!searchText) return books;
-      const result = await axios.get(`${import.meta.env.VITE_API_URL}/search`, {
-        params: { search: searchText },
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/books`, {
+        params: {
+          search: searchText,
+          sort: sortOrder,
+        },
       });
-      return result.data;
+      return res.data;
     },
-    enabled: !!searchText,
   });
 
   const onSubmit = (data) => {
     setSearchText(data.searchfield);
-    // refetchSearch();
+    reset();
   };
 
-  // SORTED BOOKS
-  const { data: sortedBooks = [], isLoading: isSorting } = useQuery({
-    queryKey: ["sortedBooks", sortOrder],
-    queryFn: async () => {
-      const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/sort?sort=${sortOrder}`
-      );
-      return res.data;
-    },
-  });
-  if (isBooksLoading || isSearching || isSorting) return <LoadingSpinner />;
-  const finalBooks = searchText
-    ? filteredBooks
-    : sortedBooks.length
-    ? sortedBooks
-    : books;
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <Container>
       <div>
-        <div className="flex px-4 flex-col  mt-12 md:flex-row justify-between  items-center gap-4 ">
-          {/* SEARCH FORM */}
+        <div className="flex px-4 flex-col mt-12 md:flex-row justify-between items-center gap-4">
+          {/*  SEARCH FORM */}
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex items-center gap-3"
@@ -70,22 +47,24 @@ const Books = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
-                <g
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="8"
+                  stroke="currentColor"
                   strokeWidth="2"
                   fill="none"
+                />
+                <path
+                  d="M21 21l-4.3-4.3"
                   stroke="currentColor"
-                >
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <path d="M21 21l-4.3-4.3"></path>
-                </g>
+                  strokeWidth="2"
+                />
               </svg>
 
               <input
                 type="search"
                 {...register("searchfield")}
-                required
                 placeholder="Search books..."
                 className="flex-1 outline-none bg-transparent text-blue-700"
               />
@@ -96,22 +75,21 @@ const Books = () => {
             </button>
           </form>
 
-          {/* SORT DROPDOWN */}
-          <div>
-            <select
-              onChange={(e) => setSortOrder(e.target.value)}
-              className="border-2 px-3 py-2 rounded-lg text-blue-700 border-blue-500 shadow bg-white focus:ring-1 focus:ring-blue-400"
-            >
-              <option value="asc">Price: Low → High</option>
-              <option value="desc">Price: High → Low</option>
-            </select>
-          </div>
+          {/*  SORT */}
+          <select
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value)}
+            className="border-2 px-3 py-2 rounded-lg text-blue-700 border-blue-500 shadow bg-white focus:ring-1 focus:ring-blue-400"
+          >
+            <option value="asc">Price: Low → High</option>
+            <option value="desc">Price: High → Low</option>
+          </select>
         </div>
 
-        {/* BOOKS GRID */}
+        {/* BOOK LIST */}
         <div className="pt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {finalBooks.length > 0 ? (
-            finalBooks.map((book) => <Card key={book._id} book={book} />)
+          {books.length > 0 ? (
+            books.map((book) => <Card key={book._id} book={book} />)
           ) : (
             <p className="text-center text-gray-500 col-span-full">
               Books not found
