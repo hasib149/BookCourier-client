@@ -79,19 +79,21 @@ const UserDataRow = ({ book, refetch }) => {
 
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <div className="flex items-center gap-3">
-          <button
-            onClick={handlePublished}
-            className="btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white"
-          >
-            Publish
-          </button>
-
-          <button
-            onClick={handleUnpublished}
-            className="btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white"
-          >
-            Unpublish
-          </button>
+          {status === "published" ? (
+            <button
+              onClick={handleUnpublished}
+              className="btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white"
+            >
+              Unpublish
+            </button>
+          ) : (
+            <button
+              onClick={handlePublished}
+              className="btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white"
+            >
+              Publish
+            </button>
+          )}
         </div>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">

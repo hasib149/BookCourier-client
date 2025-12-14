@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 import { imageUpload } from "../../../../Utilites";
 import toast from "react-hot-toast";
@@ -9,6 +9,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const EditBook = () => {
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const { id } = useParams();
   const { data: book = {} } = useQuery({
@@ -83,6 +84,7 @@ const EditBook = () => {
     try {
       await mutateAsync(bookData);
       toast.success("Book updated successfully");
+      navigate("/dashboard/my-books");
     } catch (error) {
       console.log(error);
     }

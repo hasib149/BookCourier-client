@@ -37,12 +37,14 @@ const MyBooksDataRow = ({ book, refetch }) => {
           Edit
         </Link>
 
-        <button
-          onClick={handleUnpublished}
-          className="btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white"
-        >
-          Unpublished
-        </button>
+        {status !== "unpublished" && (
+          <button
+            onClick={handleUnpublished}
+            className="btn w-full sm:w-auto border border-blue-600 hover:bg-blue-500 hover:text-white"
+          >
+            Unpublished
+          </button>
+        )}
       </td>
     </tr>
   );
