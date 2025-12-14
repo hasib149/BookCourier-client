@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import LoadingSpinner from "../Shared/LoadingSpinner";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
-const PurchaseModal = ({ closeModal, isOpen, book }) => {
+const PurchaseModal = ({ closeModal, isOpen, book, refetch }) => {
   console.log(book);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -54,6 +54,7 @@ const PurchaseModal = ({ closeModal, isOpen, book }) => {
       };
       await mutateAsync(orderData);
       reset();
+      refetch();
     } catch (error) {
       console.log(error);
     }
