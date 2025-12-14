@@ -7,7 +7,6 @@ import LoadingSpinner from "../Shared/LoadingSpinner";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const PurchaseModal = ({ closeModal, isOpen, book, refetch }) => {
-  console.log(book);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
@@ -35,7 +34,6 @@ const PurchaseModal = ({ closeModal, isOpen, book, refetch }) => {
 
   const onSubmit = async (data) => {
     const { address, Phone, email, name, bookname, price } = data;
-    console.log(data);
 
     try {
       const orderData = {

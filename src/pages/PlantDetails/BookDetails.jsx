@@ -90,7 +90,6 @@ const BookDetails = () => {
     },
     enabled: !!user,
   });
-  console.log(trogols);
 
   // Wishlist
   const addToWishlist = async () => {

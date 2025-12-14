@@ -64,7 +64,7 @@ const Navbar = () => {
 
   return (
     <div
-      className="navbar bg-linear-to-b from-blue-300 to-blue-400 px-16
+      className="navbar bg-linear-to-b from-blue-300 to-blue-400  px-16
   border-b border-blue-300 "
     >
       <div className="navbar-start ">
@@ -101,7 +101,6 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="pl-12"></div>
 
       <div className="navbar-end gap-2">
         {user ? (
