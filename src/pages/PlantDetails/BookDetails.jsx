@@ -9,11 +9,13 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const BookDetails = () => {
   const { id } = useParams();
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   // Book fetch
   const { data: book = {}, isLoading } = useQuery({
@@ -87,7 +89,7 @@ const BookDetails = () => {
     }
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/wishlist`, {
+      await axiosSecure.post(`/api/wishlist`, {
         useremail: user?.email,
         bookId: book._id,
         bookname: book.name,
