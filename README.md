@@ -13,9 +13,7 @@ Allows users to save books they like and purchase them later.
 ✅ 5. Personalized Recommendations
 Suggests books based on user preferences and reading habits.
 
-
-3/Live URL:
-
+3/Live URL:https://assignment-11-8f135.web.app
 
 4/key features:
 🔹 1. User-Friendly Book Browsing
@@ -54,7 +52,6 @@ Suggests books based on user behavior and preferences.
 Fully mobile-friendly and modern design with a smooth experience.
 🔹 12. Secure Authentication
 Login/Signup with email & password or social login .
-
 
 5/npm packages:
 react
