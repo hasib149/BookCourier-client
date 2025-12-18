@@ -30,7 +30,7 @@ const Sidebar = () => {
   return (
     <>
       {/* Small Screen Navbar, only visible till md breakpoint */}
-      <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden">
+      <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden ">
         <div>
           <div className="block cursor-pointer bg-blue-500 p-4 font-bold">
             <Link to="/">
@@ -65,7 +65,7 @@ const Sidebar = () => {
           </div>
 
           {/* Middle Content */}
-          <div className="flex flex-col justify-between flex-1  mt-6">
+          <div className="flex flex-col justify-between flex-1 dark:text-white mt-6">
             {/*  Menu Items */}
             <nav>
               {/* Role-Based Menu */}

@@ -3,9 +3,9 @@ import Navbar from '../components/Shared/Navbar/Navbar'
 import Footer from '../components/Shared/Footer/Footer'
 const MainLayout = () => {
   return (
-    <div>
+    <div className='dark:bg-black dark:text-white'>
       <Navbar />
-      <div className='pt-24 min-h-[calc(100vh-68px)] bg-linear-to-r from-blue-50 to-sky-100'>
+      <div className='pt-24 min-h-[calc(100vh-68px)] '>
         <Outlet />
       </div>
       <Footer />
