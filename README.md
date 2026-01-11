@@ -76,3 +76,55 @@ mongoose → MongoDB ODM
 mongodb → if using native MongoDB driver
 cookie-parser → cookies
 morgan → logging
+
+
+6/Steps to Run BookCourier Locally:
+
+Clone the Repository
+
+git clone <repo-link>
+cd BookCourier
+
+
+7/Install Backend Dependencies
+
+cd backend
+npm install
+
+
+Setup Environment Variables
+
+Create a .env file in the backend folder.
+
+Add variables like:
+
+PORT=5000
+MONGO_URI=<your_mongodb_connection_string>
+JWT_SECRET=<your_secret_key>
+
+
+Run Backend Server
+
+npm run dev
+
+
+Server should start at http://localhost:5000
+
+8/Install Frontend Dependencies
+
+cd ../frontend
+npm install
+
+
+Run Frontend Server
+
+npm start
+
+
+Frontend should open at http://localhost:3000
+
+Test the Application
+
+Open the browser and navigate to http://localhost:3000
+
+Try registering, logging in, and ordering books.
