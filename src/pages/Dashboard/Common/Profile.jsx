@@ -14,7 +14,7 @@ const Profile = () => {
   if (isRoleLoading) return <LoadingSpinner />;
 
   return (
-    <div className="min-h-screen flex justify-center items-start p-6 bg-[#E0F7FA]">
+    <div className="min-h-screen flex justify-center items-start p-6 bg-[#E0F7FA] dark:bg-black">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl pt-20 pb-8 px-6 text-center">
         {/* Avatar (position-free) */}
         <div className="flex justify-center -mt-20">
