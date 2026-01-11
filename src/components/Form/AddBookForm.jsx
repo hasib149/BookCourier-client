@@ -86,7 +86,7 @@ const AddBookForm = () => {
   if (isError) return <ErrorPage />;
 
   return (
-    <section className="min-h-screen bg-linear-to-br from-blue-100 via-sky-100 to-blue-200 py-16 px-6">
+    <section className="min-h-screen  py-16 px-6">
       <div className="max-w-3xl mx-auto bg-white/70 backdrop-blur-md shadow-xl rounded-2xl p-10 border border-blue-200">
         <h2 className="text-3xl font-bold text-blue-700 mb-8 text-center">
           Add a New Book

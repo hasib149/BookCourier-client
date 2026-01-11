@@ -19,7 +19,7 @@ const MyWishList = () => {
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
-    <div className="bg-blue-50 min-h-screen py-10">
+    <div className=" min-h-screen py-10">
       <h2 className="text-3xl font-bold text-blue-700 text-center mb-8">
         Your Wishlist Information
       </h2>

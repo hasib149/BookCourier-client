@@ -32,7 +32,7 @@ const Sidebar = () => {
       {/* Small Screen Navbar, only visible till md breakpoint */}
       <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden ">
         <div>
-          <div className="block cursor-pointer bg-blue-500 p-4 font-bold">
+          <div className="block cursor-pointer text-[#023E8A] p-8 font-bold">
             <Link to="/">
               <Logo></Logo>
             </Link>
