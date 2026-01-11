@@ -36,10 +36,10 @@ const Review = () => {
   const isMobile = window.innerWidth < 640;
 
   return (
-    <div className="mb-16">
-      <div className="text-center p-8 rounded-lg max-w-3xl mx-auto mt-16 mb-16">
-        <h2 className="text-4xl font-bold text-blue-700 mb-3">
-          Customers most <span className="text-sky-600">favourite book</span>
+    <div className="mb-8">
+      <div className="text-center p-8 rounded-lg max-w-3xl mx-auto mt-12 mb-10">
+        <h2 className="text-4xl font-bold text-[#023E8A]  mb-3">
+          Customers most <span className="text-[#023E8A] ">favourite book</span>
         </h2>
         <p className="text-lg text-gray-600">
           Enhance posture, mobility, and well-being effortlessly with Posture

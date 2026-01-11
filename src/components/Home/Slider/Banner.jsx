@@ -6,7 +6,13 @@ import Slider3 from "./Slider3";
 
 const Banner = () => {
   return (
-    <Carousel showThumbs={false} autoPlay={true} infiniteLoop={true} interval={1700}>
+    <Carousel
+      className=""
+      showThumbs={false}
+      autoPlay={true}
+      infiniteLoop={true}
+      interval={1700}
+    >
       <div>
         <Slider1></Slider1>
       </div>

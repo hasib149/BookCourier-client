@@ -5,6 +5,10 @@ import Banner from "../../components/Home/Slider/Banner";
 import Testimonials from "../../components/Home/Testimonials/Testimonials";
 import WhyChooseBookCourier from "../../components/Home/Why-Choose-Book-Courier/WhyChooseBookCourier";
 import LatestBooks from "../../components/Home/LatestBooks/LatestBooks";
+import Features from "../../components/Home/Features/Features";
+import Services from "../../components/Home/Services/Services";
+import Categories from "../../components/Home/Categories/Categories";
+import Statistics from "../../components/Home/Statistics/Statistics";
 
 const Home = () => {
   return (
@@ -13,12 +17,20 @@ const Home = () => {
       <Banner></Banner>
       {/* Latest Books Section by database */}
       <LatestBooks></LatestBooks>
+      {/* features */}
+      <Features></Features>
+      {/* service */}
+      <Services></Services>
       {/* Coverage Section */}
       <CoverageSection></CoverageSection>
+      {/* cetegorirs */}
+      <Categories></Categories>
       {/* Why Choose Book Courier */}
       <WhyChooseBookCourier></WhyChooseBookCourier>
       {/* Review  */}
       <Review></Review>
+      {/* Statistics  */}
+      <Statistics></Statistics>
       {/* Testimonials */}
       <Testimonials></Testimonials>
       {/* Featured Books */}

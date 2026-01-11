@@ -1,6 +1,13 @@
 @import "tailwindcss";
-@plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #023e8a;
+  --color-secondary: #0077b6;
+  --color-Accent: #48cae4;
+  --color-Background: #caf0f8;
+  --color-dark: #1f2933;
+  --color-White: #ffffff;
 }
-
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

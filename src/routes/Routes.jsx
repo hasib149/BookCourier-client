@@ -23,6 +23,7 @@ import MyWishList from "../pages/Dashboard/Customer/MyWishList/MyWishList";
 import LiberianRoute from "./LiberianRoute";
 import ManageBooks from "../pages/Dashboard/Admin/ManageBooks";
 import AdminRoute from "./AdminRoute";
+import About from "../pages/About/About";
 
 export const router = createBrowserRouter([
   {
@@ -39,17 +40,34 @@ export const router = createBrowserRouter([
         element: <AllBooks />,
       },
       {
-        path: "/payment-success",
-        element: <PaymentSuccess />,
+        path: "/about",
+        element: <About />,
       },
+      {
+        path: "/payment-success",
+        element: (
+          <PrivateRoute>
+            <PaymentSuccess />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      },
+      { path: "/login", element: <Login /> },
+      { path: "/signup", element: <SignUp /> },
+
       {
         path: "/books/:id",
         element: <BookDetails />,
       },
     ],
   },
-  { path: "/login", element: <Login /> },
-  { path: "/signup", element: <SignUp /> },
   {
     path: "/dashboard",
     element: (

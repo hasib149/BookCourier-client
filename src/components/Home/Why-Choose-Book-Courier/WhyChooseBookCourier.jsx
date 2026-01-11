@@ -2,10 +2,10 @@ import React from "react";
 
 const WhyChooseBookCourier = () => {
   return (
-    <section className="py-16 ">
+    <section className="py-8 ">
       <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold text-blue-700 mb-6">
-          Why Choose <span className="text-sky-600">BookCourier?</span>
+        <h2 className="text-4xl font-bold text-[#023E8A]  mb-6">
+          Why Choose <span className="text-[#023E8A] ">BookCourier?</span>
         </h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
           BookCourier brings books to your doorstep with unmatched speed,

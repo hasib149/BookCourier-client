@@ -4,7 +4,7 @@ import Container from "../Container";
 
 const Footer = () => {
   return (
-    <footer className="bg-linear-to-r from-blue-500 to-blue-700 text-white mt-8 px-6 py-12">
+    <footer className="bg-primary text-white mt-8 px-6 py-12">
       <Container>
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {/* Quick Links */}
@@ -17,18 +17,18 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <a href="about" className="hover:underline">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <a href="all-books" className="hover:underline">
                   All Books
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
-                  Contact
+                <a href="profile" className="hover:underline">
+                  Profile
                 </a>
               </li>
             </ul>

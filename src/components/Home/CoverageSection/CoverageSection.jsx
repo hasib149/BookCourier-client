@@ -112,13 +112,13 @@ const CoverageSection = () => {
   const centerPosition = [23.685, 90.3563];
 
   return (
-    <div className="w-full mt-10">
-      <div className="text-center bg-blue-50 p-8 rounded-lg">
-        <h2 className="text-4xl font-bold text-blue-700 mb-3">
+    <div className="w-full mt-6">
+      <div className="text-center  p-8 rounded-lg">
+        <h2 className="text-4xl font-bold text-[#023E8A] mb-3">
           We deliver almost all over{" "}
-          <span className="text-sky-600">Bangladesh</span>
+          <span className="text-[#023E8A]">Bangladesh</span>
         </h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
           This section shows a map that displays all available cities where
           books can be delivered.
         </p>

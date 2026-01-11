@@ -10,18 +10,18 @@ import {
 
 const FeaturedBooks = () => {
   return (
-    <section className="bg-lineart-to-r from-sky-100 via-blue-50 to-sky-200 py-20">
+    <section className="py-12">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold text-blue-800 mb-6">
-          Why <span className="text-sky-600">Readers Love Us</span>
+        <h2 className="text-4xl font-bold text-[#023E8A]  mb-3">
+          Why <span className="text-[#023E8A] ">Readers Love Us</span>
         </h2>
-        <p className=" mb-12 max-w-2xl mx-auto">
+        <p className=" mb-12 text-gray-500 max-w-2xl mx-auto">
           We prioritize our readers and their experience. Here’s what makes
           BookCourier special.
         </p>
 
         <div className="grid md:grid-cols-3 gap-10">
-          <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+          <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow">
             <FaShippingFast className="text-blue-700 text-5xl mb-4" />
             <h3 className="text-xl font-semibold text-blue-800 mb-2">
               Fast Delivery
@@ -32,7 +32,7 @@ const FeaturedBooks = () => {
             </p>
           </div>
 
-          <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+          <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow">
             <FaBookOpen className="text-blue-700 text-5xl mb-4" />
             <h3 className="text-xl font-semibold text-blue-800 mb-2">
               Huge Collection
@@ -42,7 +42,7 @@ const FeaturedBooks = () => {
             </p>
           </div>
 
-          <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+          <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow">
             <FaHeadset className="text-blue-700 text-5xl mb-4" />
             <h3 className="text-xl font-semibold text-blue-800 mb-2">
               24/7 Support
@@ -53,7 +53,7 @@ const FeaturedBooks = () => {
             </p>
           </div>
 
-          <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+          <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow">
             <FaGift className="text-blue-700 text-5xl mb-4" />
             <h3 className="text-xl font-semibold text-blue-800 mb-2">
               Special Offers
@@ -63,7 +63,7 @@ const FeaturedBooks = () => {
             </p>
           </div>
 
-          <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+          <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow">
             <FaStar className="text-blue-700 text-5xl mb-4" />
             <h3 className="text-xl font-semibold text-blue-800 mb-2">
               Top Quality Books
@@ -73,7 +73,7 @@ const FeaturedBooks = () => {
             </p>
           </div>
 
-          <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+          <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow">
             <FaThumbsUp className="text-blue-700 text-5xl mb-4" />
             <h3 className="text-xl font-semibold text-blue-800 mb-2">
               Trusted by Readers

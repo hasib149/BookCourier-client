@@ -20,8 +20,11 @@ const LatestBooks = () => {
 
   return (
     <Container>
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-[#023E8A]  mt-12">
+        Newest Book
+      </h2>
       {books && books.length > 0 ? (
-        <div className="pt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="pt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {books.map((book) => (
             <Card key={book._id} book={book} />
           ))}

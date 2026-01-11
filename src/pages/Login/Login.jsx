@@ -17,19 +17,18 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm();
 
   const onSubmit = async (data) => {
     const { email, password } = data;
     try {
-      //User Login
       const { user } = await signIn(email, password);
       await saveOrUpdateUser({
         name: user?.displayName,
         email: user?.email,
         image: user?.photoURL,
       });
-
       navigate(from, { replace: true });
       toast.success("Login Successful");
     } catch (err) {
@@ -41,17 +40,14 @@ const Login = () => {
   if (loading) return <LoadingSpinner />;
   if (user) return <Navigate to={from} replace={true} />;
 
-  // Handle Google Signin
   const handleGoogleSignIn = async () => {
     try {
-      //User Registration using google
       const { user } = await signInWithGoogle();
       await saveOrUpdateUser({
         name: user?.displayName,
         email: user?.email,
         image: user?.photoURL,
       });
-
       navigate(from, { replace: true });
       toast.success("Login Successful");
     } catch (err) {
@@ -60,121 +56,140 @@ const Login = () => {
       toast.error(err?.message);
     }
   };
+
+  // Demo Login button handler
+  const handleDemoCustomerLogin = () => {
+    setValue("email", "customer@gmail.com");
+    setValue("password", "1234asAS?");
+  };
+  // Demo Login button handler
+  const handleDemoLibrarianLogin = () => {
+    setValue("email", "liberian@gmail.com");
+    setValue("password", "1234asAS?");
+  };
+  // Demo Login button handler
+  const handleDemoAdminLogin = () => {
+    setValue("email", "admin@gmail.com");
+    setValue("password", "1234asAS?");
+  };
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-white">
-      <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
+    <div className="flex justify-center items-center bg-[#CAF0F8] min-h-screen py-10">
+      <div className="flex flex-col w-full max-w-md p-8 rounded-3xl bg-white shadow-xl">
+        {/* HEADER */}
         <div className="mb-8 text-center">
-          <h1 className="my-3 text-4xl font-bold">Log In</h1>
-          <p className="text-sm text-gray-400">
-            Sign in to access your account
+          <h1 className="text-4xl font-extrabold text-[#023E8A]">
+            Welcome Back
+          </h1>
+          <p className="text-sm text-[#1F2933] mt-2">
+            Sign in to access your BookCurier account
           </p>
         </div>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          noValidate=""
-          action=""
-          className="space-y-6 ng-untouched ng-pristine ng-valid"
-        >
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="email" className="block mb-2 text-sm">
-                Email address
-              </label>
-              <input
-                type="email"
-                id="email"
-                required
-                placeholder="Enter Your Email Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900"
-                data-temp-mail-org="0"
-                {...register("email", {
-                  required: "email is requard",
-                  pattern: {
-                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                    message: "Please enter a valid email address.",
-                  },
-                })}
-              />
-              {errors.email && (
-                <p className="text-red-500 text-xs mt-1">
-                  {errors.email.message}
-                </p>
-              )}
-            </div>
-            <div>
-              <div className="flex justify-between">
-                <label htmlFor="password" className="text-sm mb-2">
-                  Password
-                </label>
-              </div>
-              <input
-                type="password"
-                name="password"
-                autoComplete="current-password"
-                id="password"
-                required
-                placeholder="*******"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900"
-                {...register("password", {
-                  required: "password is requard",
-                  pattern: {
-                    value:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
-                    message: "Invalid password!",
-                  },
-                })}
-              />
-              {errors.password && (
-                <p className="text-red-500 text-xs mt-1">
-                  {errors.password.message}
-                </p>
-              )}
-            </div>
+
+        {/* FORM */}
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <div>
+            <label className="block mb-2 text-sm font-medium text-[#023E8A]">
+              Email
+            </label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="w-full px-4 py-3 border border-[#0077B6] rounded-xl text-[#023E8A] focus:ring-2 focus:ring-[#48CAE4] outline-none"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: "Enter a valid email",
+                },
+              })}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           <div>
-            <button
-              type="submit"
-              className="bg-blue-500 w-full rounded-md py-3 text-white"
-            >
-              {loading ? (
-                <TbFidgetSpinner className="animate-spin m-auto" />
-              ) : (
-                "Continue"
-              )}
-            </button>
+            <label className="block mb-2 text-sm font-medium text-[#023E8A]">
+              Password
+            </label>
+            <input
+              type="password"
+              placeholder="********"
+              className="w-full px-4 py-3 border border-[#0077B6] rounded-xl text-[#023E8A] focus:ring-2 focus:ring-[#48CAE4] outline-none"
+              {...register("password", {
+                required: "Password is required",
+                pattern: {
+                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{6,}$/,
+                  message: "Password must be strong",
+                },
+              })}
+            />
+            {errors.password && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.password.message}
+              </p>
+            )}
           </div>
+
+          <button
+            type="submit"
+            className="w-full py-3 bg-[#48CAE4] hover:bg-[#0077B6] text-[#023E8A] font-bold rounded-xl shadow-lg transition-colors flex justify-center items-center"
+          >
+            {loading ? (
+              <TbFidgetSpinner className="animate-spin text-xl" />
+            ) : (
+              "Login"
+            )}
+          </button>
         </form>
-        <div className="space-y-1">
-          <button className="text-xs hover:underline hover:text-blue-500 text-gray-400 cursor-pointer">
+
+        {/* Demo Login Button */}
+        <button
+          onClick={handleDemoCustomerLogin}
+          className="w-full mt-4 py-3 bg-[#ADE8F4] hover:bg-[#0077B6] text-[#023E8A] font-bold rounded-xl shadow-lg transition-colors"
+        >
+          Demo Customer Login
+        </button>
+        <button
+          onClick={handleDemoLibrarianLogin}
+          className="w-full mt-4 py-3 bg-[#ADE8F4] hover:bg-[#0077B6] text-[#023E8A] font-bold rounded-xl shadow-lg transition-colors"
+        >
+          Demo Liberian Login
+        </button>
+        <button
+          onClick={handleDemoAdminLogin}
+          className="w-full mt-4 py-3 bg-[#ADE8F4] hover:bg-[#0077B6] text-[#023E8A] font-bold rounded-xl shadow-lg transition-colors"
+        >
+          Demo Admin Login
+        </button>
+
+        <div className="text-right mt-2">
+          <button className="text-xs text-[#0077B6] hover:underline">
             Forgot password?
           </button>
         </div>
-        <div className="flex items-center pt-4 space-x-1">
-          <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-          <p className="px-3 text-sm dark:text-gray-400">
-            Login with social accounts
-          </p>
-          <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-        </div>
-        <div
-          onClick={handleGoogleSignIn}
-          className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
-        >
-          <FcGoogle size={32} />
 
-          <p>Continue with Google</p>
+        <div className="flex items-center my-6">
+          <div className="flex-1 h-px bg-[#0077B6]"></div>
+          <p className="px-4 text-sm text-[#023E8A]">Or continue with</p>
+          <div className="flex-1 h-px bg-[#0077B6]"></div>
         </div>
-        <p className="px-6 text-sm text-center text-gray-400">
-          Don&apos;t have an account yet?{" "}
-          <Link
-            state={from}
-            to="/signup"
-            className="hover:underline hover:text-blue-500 text-gray-600"
-          >
+
+        <button
+          onClick={handleGoogleSignIn}
+          className="flex items-center justify-center gap-3 border border-[#0077B6] py-2 rounded-xl hover:bg-[#0077B6] hover:text-white transition-colors font-semibold text-[#023E8A]"
+        >
+          <FcGoogle size={24} /> Continue with Google
+        </button>
+
+        <p className="text-center mt-6 text-sm text-[#1F2933]">
+          Don't have an account?{" "}
+          <Link to="/signup" className="text-[#0077B6] hover:underline">
             Sign up
           </Link>
-          .
         </p>
       </div>
     </div>

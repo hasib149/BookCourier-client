@@ -27,7 +27,6 @@ const BookDetails = () => {
       return result.data;
     },
   });
-
   const {
     _id,
     image,
@@ -123,57 +122,57 @@ const BookDetails = () => {
 
   return (
     <Container>
-      <div className="mx-auto flex flex-col lg:flex-row justify-between w-full gap-12">
+      <div className="mx-auto flex flex-col lg:flex-row gap-12 w-full mt-10">
         {/* Book Image */}
-        <div className="flex flex-col gap-6 flex-1">
-          <div className="w-full h-96 overflow-hidden rounded-xl">
+        <div className="flex-1">
+          <div className="w-full h-96 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow">
             <img
-              className="object-cover w-full h-full"
               src={image}
               alt={name}
+              className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
             />
           </div>
         </div>
 
         {/* Book Info */}
-        <div className="flex-1">
+        <div className="flex-1 flex flex-col gap-6">
           <Heading title={name} subtitle={`Category: ${category}`} />
-          <hr className="my-6" />
+          <hr className="border-[#0077B6]" />
 
-          <div className="text-lg font-light">{description}</div>
+          {/* Description */}
+          <p className="text-[#1F2933] font-light text-lg">{description}</p>
+          <hr className="border-[#0077B6]" />
 
-          <hr className="my-6" />
-
-          <div className="text-xl font-semibold flex items-center gap-2">
-            <div>Librarian: {Librarian?.name}</div>
+          {/* Librarian */}
+          <div className="flex items-center gap-3 text-lg font-medium">
+            <p>Librarian: {Librarian?.name}</p>
             <img
-              className="rounded-full"
-              height="30"
-              width="30"
-              alt="Avatar"
               src={Librarian?.image}
+              alt="Avatar"
+              className="w-10 h-10 rounded-full object-cover"
             />
           </div>
+          <hr className="border-[#0077B6]" />
 
-          <hr className="my-6" />
+          {/* Quantity */}
+          <p className="text-[#023E8A] font-semibold">
+            Quantity: {quantity} Units Left Only!
+          </p>
+          <hr className="border-[#0077B6]" />
 
-          <p className="font-light">Quantity: {quantity} Units Left Only!</p>
-
-          <hr className="my-6" />
-
-          <div className="flex justify-between">
-            <p className="font-bold text-3xl">Price: {price}$</p>
+          {/* Price & Actions */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-3xl font-bold text-[#0077B6]">Price: {price}$</p>
             <div className="flex gap-4">
               <button
-                className="btn border border-blue-600 hover:bg-blue-500 hover:text-white"
                 onClick={() => setIsOpen(true)}
+                className="btn px-6 py-2 rounded-lg bg-[#48CAE4] text-[#023E8A] font-semibold hover:bg-[#0077B6] hover:text-white shadow transition-colors"
               >
                 Order Now
               </button>
-
               <button
-                className="btn border border-blue-600 hover:bg-blue-500 hover:text-white"
                 onClick={addToWishlist}
+                className="btn px-6 py-2 rounded-lg border border-[#0077B6] hover:bg-[#0077B6] hover:text-white shadow transition-colors"
               >
                 Add to Wishlist
               </button>
@@ -187,26 +186,29 @@ const BookDetails = () => {
             isOpen={isOpen}
           />
 
-          <hr className="my-6" />
+          <hr className="border-[#0077B6]" />
 
-          {/*  ONLY IF USER PURCHASED */}
+          {/* Reviews Section */}
           {trogols.length > 0 ? (
-            <>
+            <div className="flex flex-col gap-6">
               {/* Average Rating */}
-              <div className="mt-6">
-                <p className="font-semibold">
-                  Average Rating: {ratingData.averageRating.toFixed(1)} ⭐ (
-                  {ratingData.totalReviews} reviews)
-                </p>
-              </div>
+              <p className="font-semibold text-[#023E8A] text-lg">
+                Average Rating: {ratingData.averageRating.toFixed(1)} ⭐ (
+                {ratingData.totalReviews} reviews)
+              </p>
 
-              {/* Add Review */}
-              <div className="mt-6">
-                <h2 className="text-lg font-bold mb-2">Add Your Review</h2>
-                <form onSubmit={handleSubmit(onSubmit)}>
+              {/* Add Review Form */}
+              <div className="flex flex-col gap-3">
+                <h2 className="text-xl font-bold text-[#0077B6]">
+                  Add Your Review
+                </h2>
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  className="flex flex-col gap-3"
+                >
                   <select
                     {...register("rating")}
-                    className="border p-2 rounded w-full"
+                    className="border border-[#0077B6] p-2 rounded-lg focus:ring-2 focus:ring-[#48CAE4]"
                   >
                     <option value="5">5 Star</option>
                     <option value="4">4 Star</option>
@@ -214,22 +216,20 @@ const BookDetails = () => {
                     <option value="2">2 Star</option>
                     <option value="1">1 Star</option>
                   </select>
-
                   <textarea
                     {...register("review")}
                     placeholder="Write your review..."
-                    className="border p-2 w-full rounded mt-2"
-                  ></textarea>
-
+                    className="border border-[#0077B6] p-3 rounded-lg focus:ring-2 focus:ring-[#48CAE4]"
+                  />
                   <button
                     type="submit"
-                    className="btn mt-3 border border-blue-600 hover:bg-blue-500 hover:text-white"
+                    className="btn px-6 py-2 rounded-lg bg-[#48CAE4] text-[#023E8A] font-semibold hover:bg-[#0077B6] hover:text-white shadow transition-colors"
                   >
                     Submit Review
                   </button>
                 </form>
               </div>
-            </>
+            </div>
           ) : (
             <p className="mt-6 text-red-500 font-semibold">
               You must purchase this book to leave a review.
@@ -237,12 +237,19 @@ const BookDetails = () => {
           )}
 
           {/* Reviews List */}
-          <div className="mt-8">
-            <h2 className="text-xl font-bold">Reviews ({reviews.length})</h2>
+          <div className="mt-8 flex flex-col gap-4">
+            <h2 className="text-2xl font-bold text-[#023E8A]">
+              Reviews ({reviews.length})
+            </h2>
             {reviews.map((rev) => (
-              <div key={rev._id} className="border p-3 my-2 rounded-lg">
-                <p>⭐ {rev.rating} / 5</p>
-                <p>
+              <div
+                key={rev._id}
+                className="bg-white border border-[#0077B6] rounded-2xl p-4 shadow hover:shadow-lg transition-shadow"
+              >
+                <p className="font-semibold text-[#0077B6]">
+                  ⭐ {rev.rating} / 5
+                </p>
+                <p className="text-[#1F2933]">
                   {rev.userName}: {rev.review}
                 </p>
               </div>
