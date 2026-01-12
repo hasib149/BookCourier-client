@@ -1,3 +1,6 @@
+import AdminDashboard from "../../../components/Dashboard/Statistics/AdminDashboard";
+import LibrarianOverview from "../../../components/Dashboard/Statistics/LibrarianOverview";
+import UserDashboard from "../../../components/Dashboard/Statistics/UserDashboard";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 import useRole from "../../../hooks/useRole";
 import AllUser from "../Admin/AllUser";
@@ -10,9 +13,9 @@ const Statistics = () => {
     <div>
       {/* <AdminStatistics /> */}
 
-      {role === "customer" && <MyOrders></MyOrders>}
-      {role === "librarian" && <Orders></Orders>}
-      {role === "admin" && <AllUser />}
+      {role === "customer" && <UserDashboard></UserDashboard>}
+      {role === "librarian" && <LibrarianOverview></LibrarianOverview>}
+      {role === "admin" && <AdminDashboard></AdminDashboard>}
     </div>
   );
 };
